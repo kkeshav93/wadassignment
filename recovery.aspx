@@ -26,7 +26,7 @@
     <table>
         <tr>
             <th>
-                Email Address
+                Email Address:
             </th>
             <th>
                 <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
