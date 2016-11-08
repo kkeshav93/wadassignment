@@ -81,8 +81,10 @@ public partial class registration : System.Web.UI.Page
         student.fullName = TextBox2.Text;
         student.address = TextBox4.Text;
         student.emailAddress = TextBox8.Text;
-        student.securityQuestion = securityquestions.SelectedValue;
+        student.securityQuestion = securityquestions.SelectedItem.Text;
         student.securityQuestionAnswer = TextBox10.Text;
+
+        Response.Write(student.securityQuestion);
         
         //Alert Box creation
         
