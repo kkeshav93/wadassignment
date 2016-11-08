@@ -8,8 +8,10 @@ using System.Web.UI.WebControls;
 
 public partial class registration : System.Web.UI.Page
 {
+    List<StudentInfor> allusers = null;
     protected void Page_Load(object sender, EventArgs e)
     {
+        allusers= new List<StudentInfor>();
         date();
         month();
         Year();
@@ -70,6 +72,8 @@ public partial class registration : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
+
+        //Alert Box creation
         string script = "alert('Thank you for submitting for registration. You can now login by clicking the Login link at the top right hand side of this page.');";
         ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
     }
