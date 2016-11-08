@@ -1,0 +1,50 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="login" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Login Page</title>
+
+    <!-- Link to CSS file -->
+    <link href="login.css" rel="stylesheet" type="text/css"/>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <!-- Banner part -->
+
+        <div id="banner" >
+            <img src ="imgbanner.png" style="width: 100%; height: 208px" /> 
+        </div>
+        <!-- End of Banner section -->
+        	<!-- Nav Bar -->
+	
+	<div id = "nav-bar">
+	
+		<ul>
+			<!-- <li><a href="Default.aspx">Home</a></li> -->
+            <li style="font-size: 25px; text-decoration:underline;"><asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton_Click">Home</asp:LinkButton></li>
+			<li style="font-size: 25px; display: inline"> | </li>
+			<li><a href="#news" style="text-decoration: none">login</a></li>
+		</ul>
+		
+        <h1 class ="headingin"> User Login </h1>
+		
+		<p> If you are not a registered user, please click here:<a href = "#">Register Now </a> </p>
+		<p> If you are a registered user, please enter your login credentials below </p>
+		
+		<fieldset>
+			<label for="username" >User Id (Email Address):</label><input type="text" name="username" style="font-size:2em;">
+		</fieldset>
+		<fieldset>
+			<label for="password" >Password:</label><input type="text" name="password" style="font-size:2em;">
+		</fieldset>
+		
+
+		<input type="submit" style="width: 100px; margin-left: 30%;" />
+	</div>
+
+    </form>
+</body>
+</html>

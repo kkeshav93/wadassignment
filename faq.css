@@ -1,0 +1,34 @@
+﻿/*Nav Bar*/
+/*-----------------Start of Nav Bar CSS-----------------*/
+#nav-bar{
+	width: 100%;
+	height: 40px;
+	background-color:orange;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 5px;
+}
+li{
+	float:left;
+}
+li a {
+	display: block;
+    color: blue;
+    text-align: center;
+    padding: 14px 16px;
+    font-size: 25px;
+    display: inline;
+}
+
+/*-----------------END of Nav Bar CSS-----------------*/
+
+/*Questions and Answers*/
+/*-----------------Start of Questions and Answers CSS-----------------*/
+.text-p{
+	font-size: 18px;
+	padding-left: 4px;
+}
+/*-----------------END of Questions and Answers CSS-----------------*/
