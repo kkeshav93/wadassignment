@@ -11,183 +11,107 @@ public class StudentInfor
     //
     // TODO: Add constructor logic here
     //
+    
     public String userName
     {
-        get { return userName; }
-        set { userName = value; }
+        get ;
+        set ;
     }
-
+    
     public String password
     {
-        get { return password; }
-        set { password = value; }
+        get;
+        set;
     }
     public bool certifiedchecked
     {
-        get { return certifiedchecked; }
-        set { certifiedchecked = value; }
+        get;
+        set;
     }
     public String socialSecurityNumber
     {
-        get { return socialSecurityNumber; }
-        set { socialSecurityNumber = value; }
+        get;
+        set;
     }
     public String fullName
     {
-        get { return fullName; }
-        set { fullName = value; }
+        get;
+        set;
     }
     public String dateOfBirth
     {
-        get { return dateOfBirth; }
-        set { dateOfBirth = value; }
+        get;
+        set;
     }
     public String address
     {
-        get { return address; }
-        set { address = value; }
+        get;
+        set;
     }
 
     public String emailAddress
     {
-        get
-        {
-            return emailAddress;
-        }
-
-        set
-        {
-            emailAddress = value;
-        }
+        get;
+        set;
     }
 
     public String securityQuestion
     {
-        get
-        {
-            return securityQuestion;
-        }
-
-        set
-        {
-            securityQuestion = value;
-        }
+        get;
+        set;
     }
 
     public String securityQuestionAnswer
     {
-        get
-        {
-            return securityQuestionAnswer;
-        }
-
-        set
-        {
-            securityQuestionAnswer = value;
-        }
+        get;
+        set;
     }
 
     public int accountNumber
     {
-        get
-        {
-            return accountNumber;
-        }
-
-        set
-        {
-            accountNumber = value;
-        }
+        get;
+        set;
     }
 
     public String lastUpdatedDate
     {
-        get
-        {
-            return lastUpdatedDate;
-        }
-
-        set
-        {
-            lastUpdatedDate = value;
-        }
+        get;
+        set;
     }
 
     public float currentBalance
     {
-        get
-        {
-            return currentBalance;
-        }
-
-        set
-        {
-            currentBalance = value;
-        }
+        get;
+        set;
     }
 
     public float regularMonthlyPaymentAmount
     {
-        get
-        {
-            return regularMonthlyPaymentAmount;
-        }
-
-        set
-        {
-            regularMonthlyPaymentAmount = value;
-        }
+        get;
+        set;
     }
 
     public float amountSatisfiedByExtraPayment
     {
-        get
-        {
-            return amountSatisfiedByExtraPayment;
-        }
-
-        set
-        {
-            amountSatisfiedByExtraPayment = value;
-        }
+        get;
+        set;
     }
 
     public float pastDueAmount
     {
-        get
-        {
-            return pastDueAmount;
-        }
-
-        set
-        {
-            pastDueAmount = value;
-        }
+        get;
+        set;
     }
 
     public float currentAmountDue
     {
-        get
-        {
-            return currentAmountDue;
-        }
-
-        set
-        {
-            currentAmountDue = value;
-        }
+        get;
+        set;
     }
 
     public String currentStatementDueDate
     {
-        get
-        {
-            return currentStatementDueDate;
-        }
-
-        set
-        {
-            currentStatementDueDate = value;
-        }
+        get;
+        set;
     }
 }
