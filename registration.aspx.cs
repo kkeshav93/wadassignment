@@ -83,12 +83,11 @@ public partial class registration : System.Web.UI.Page
         student.emailAddress = TextBox8.Text;
         student.securityQuestion = securityquestions.SelectedValue;
         student.securityQuestionAnswer = TextBox10.Text;
-
-
+        
         //Alert Box creation
-        /*
+        
         string script = "alert('Thank you for submitting for registration. You can now login by clicking the Login link at the top right hand side of this page.');";
         ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
-        */    
+            
     }
 }
