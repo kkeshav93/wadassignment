@@ -11,12 +11,12 @@ public partial class registration : System.Web.UI.Page
     List<StudentInfor> allusers = null;
     protected void Page_Load(object sender, EventArgs e)
     {
-            allusers = new List<StudentInfor>();
-            date();
-            month();
-            Year();
-            securityquestion();
-       
+        allusers = new List<StudentInfor>();
+        date();
+        month();
+        Year();
+        securityquestion();
+
     }
     public void date()
     {
@@ -85,7 +85,11 @@ public partial class registration : System.Web.UI.Page
         student.securityQuestionAnswer = TextBox10.Text;
 
         Session["currentuser"] = student;
-        
+
+        if (IsPostBack)
+        {
+            
+        }
         
         //Alert Box creation
         

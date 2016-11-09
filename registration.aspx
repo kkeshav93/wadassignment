@@ -68,7 +68,7 @@
             </div>
 
             <div class="rightside">
-                <asp:TextBox ID="TextBox1" runat="server" ></asp:TextBox><mark class="hello1" style="font-size:15px">? 
+                <asp:TextBox ID="TextBox1" runat="server" AutoPostBack="true" ></asp:TextBox><mark class="hello1" style="font-size:15px">? 
                     <span class="hello">Once you set up a User Name to access your account, you will no longer need
                         to provide your complete social security number/account number, birthdate
                         or zip code to log in. For security, you will need to provide your full
