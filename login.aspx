@@ -24,7 +24,7 @@
 	
 		<ul>
 			<!-- <li><a href="Default.aspx">Home</a></li> -->
-            <li><asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton_Click">Home</asp:LinkButton></li>
+            <li><asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton_Click" CausesValidation="false">Home</asp:LinkButton></li>
 			<li style="font-size: 25px; display: inline"> | </li>
 			<li><a href="#news" style="text-decoration: none">login</a></li>
 		</ul>
@@ -32,7 +32,7 @@
     </div>
         <h1 class ="headingin"> User Login </h1>
 
-        <p> If you are not a registered user, please click here:<asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Register Now</asp:LinkButton></p>
+        <p> If you are not a registered user, please click here:<asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click" CausesValidation="false">Register Now</asp:LinkButton></p>
 		<p> If you are a registered user, please enter your login credentials below </p>
         <br />
         <p>If you forgot your password please click here <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">Recover My Password</asp:LinkButton></p>

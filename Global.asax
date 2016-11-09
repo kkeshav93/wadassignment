@@ -6,7 +6,7 @@
     {
         // Code that runs on application startup
         Application["AllUsersList"] = new List<StudentInfor>();
-        List<StudentInfor> allUsersList = Application["AllUserList"] as List<StudentInfor>;
+        
 
     }
 

@@ -8,14 +8,15 @@ using System.Web.UI.WebControls;
 
 public partial class registration : System.Web.UI.Page
 {
-    List<StudentInfor> allusers = null;
+  
     protected void Page_Load(object sender, EventArgs e)
     {
-        allusers = new List<StudentInfor>();
+        List<StudentInfor> allUsersList = Application["AllUserList"] as List<StudentInfor>;
         date();
         month();
         Year();
         securityquestion();
+       
 
     }
     public void date()
@@ -73,28 +74,52 @@ public partial class registration : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        StudentInfor student = new StudentInfor();
-        student.userName = TextBox5.Text;
-        student.password = TextBox6.Text;
-        student.certifiedchecked = CheckBox1.Checked;
-        student.socialSecurityNumber = TextBox1.Text;
-        student.fullName = TextBox2.Text;
-        student.address = TextBox4.Text;
-        student.emailAddress = TextBox8.Text;
-        student.securityQuestion = securityquestions.SelectedItem.Text;
-        student.securityQuestionAnswer = TextBox10.Text;
 
-        Session["currentuser"] = student;
+            StudentInfor student = new StudentInfor();
+            student.userName = TextBox5.Text;
+            student.password = TextBox6.Text;
+            student.certifiedchecked = CheckBox1.Checked;
+            student.socialSecurityNumber = TextBox1.Text;
+            student.fullName = TextBox2.Text;
+            student.address = TextBox4.Text;
+            student.emailAddress = TextBox8.Text;
+            student.securityQuestion = securityquestions.SelectedItem.Text;
+            student.securityQuestionAnswer = TextBox10.Text;
 
-        if (IsPostBack)
-        {
-            sds
-        }
+            List<StudentInfor> allUsersList = Application["AllUsersList"] as List<StudentInfor>;
+            allUsersList.Add(student);
+            Application["AllUsersList"] = allUsersList as List<StudentInfor>;
+
         
         //Alert Box creation
-        
+
         string script = "alert('Thank you for submitting for registration. You can now login by clicking the Login link at the top right hand side of this page.');";
         ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
             
+    }
+
+    protected void TextBox1_TextChanged(object sender, EventArgs e)
+    {
+        List<StudentInfor> allUsersList = Application["AllUsersList"] as List<StudentInfor>;
+        try
+        {
+            if (IsPostBack)
+            {
+                int i = 0;
+                for (i = 0; i < allUsersList.Count; i++)
+                {
+                    if (allUsersList[i].socialSecurityNumber == this.TextBox1.Text)
+                    {
+                        string str = "Your social security number is already existing.Please login";
+                        Response.Write("<script language=javascript>alert('" + str + "');</script>");
+                        break;
+                    }
+                }
+            }
+        }
+        catch
+        {
+
+        }
     }
 }

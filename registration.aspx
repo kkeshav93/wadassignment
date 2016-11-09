@@ -23,10 +23,10 @@
 	
 		    <ul>
 			    <!-- <li><a href="Default.aspx">Home</a></li> -->
-                <li><asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Home</asp:LinkButton></li>
+                <li><asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" CausesValidation="false">Home</asp:LinkButton></li>
 			    <li style="font-size: 25px; display: inline"> | </li>
 			    <li><a href="#news" style="text-decoration: none">Registration</a></li>
-                <li style="float:right"><asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Login</asp:LinkButton></li>
+                <li style="float:right"><asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click" CausesValidation="false">Login</asp:LinkButton></li>
 		    </ul>
 
         </div>
@@ -35,6 +35,7 @@
 
             <asp:CheckBox ID="CheckBox1" runat="server" CssClass="checkboxss"/> By Providing this information, I certify that I am the person identified by
             these items, and that I agree to the site Terms of Use
+                
 
         </div>
         
@@ -68,7 +69,7 @@
             </div>
 
             <div class="rightside">
-                <asp:TextBox ID="TextBox1" runat="server" AutoPostBack="true" ></asp:TextBox><mark class="hello1" style="font-size:15px">? 
+                <asp:TextBox ID="TextBox1" runat="server" AutoPostBack="true" OnTextChanged="TextBox1_TextChanged" ></asp:TextBox><mark class="hello1" style="font-size:15px">? 
                     <span class="hello">Once you set up a User Name to access your account, you will no longer need
                         to provide your complete social security number/account number, birthdate
                         or zip code to log in. For security, you will need to provide your full
