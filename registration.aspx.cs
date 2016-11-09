@@ -84,7 +84,8 @@ public partial class registration : System.Web.UI.Page
         student.securityQuestion = securityquestions.SelectedItem.Text;
         student.securityQuestionAnswer = TextBox10.Text;
 
-        Response.Write(student.securityQuestion);
+        Session["currentuser"] = student;
+        
         
         //Alert Box creation
         
