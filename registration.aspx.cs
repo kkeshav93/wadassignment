@@ -85,12 +85,17 @@ public partial class registration : System.Web.UI.Page
             student.emailAddress = TextBox8.Text;
             student.securityQuestion = securityquestions.SelectedItem.Text;
             student.securityQuestionAnswer = TextBox10.Text;
+            student.dateOfBirth = month1.SelectedItem.Text + "/" + date1.SelectedItem.Text + "/" + year1.SelectedItem.Text;
 
             List<StudentInfor> allUsersList = Application["AllUsersList"] as List<StudentInfor>;
             allUsersList.Add(student);
             Application["AllUsersList"] = allUsersList as List<StudentInfor>;
 
-        
+        if (CheckBox1.Checked == false)
+        {
+            string script1 = "alert('You have not checked the check box. Please check it');";
+            ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script1, true);
+        }
         //Alert Box creation
 
         string script = "alert('Thank you for submitting for registration. You can now login by clicking the Login link at the top right hand side of this page.');";
