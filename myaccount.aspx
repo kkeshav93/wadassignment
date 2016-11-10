@@ -43,7 +43,9 @@
                     Full Name:
                 </td>
                 <td class="cellsbeforethemainclass">
-                    John Nathaniel Doe
+                    <asp:label ID="NameofAccount" runat="server" text="Label"></asp:label>
+
+
                 </td>
             </tr>
                 <tr class="beforemaintable">

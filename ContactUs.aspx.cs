@@ -9,7 +9,7 @@ public partial class ContactUs : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session["username"] = "keshav";
+        
         if (!IsPostBack)
         {
             if (Session["username"] != null)
@@ -37,7 +37,7 @@ public partial class ContactUs : System.Web.UI.Page
         else
         {
             Session.Abandon();
-            string str = "It apperas this user is not in our database. Please Click Register Now Link";
+            string str = "You are now logged out";
             Response.Write("<script language=javascript>alert('" + str + "');</script>");
             Response.AddHeader("REFRESH", "2; URL=Default.aspx");
             

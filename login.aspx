@@ -47,7 +47,7 @@
             </div>
 
             <div class="rightside">
-                <asp:TextBox ID="TextBox1" runat="server" Height="35px" Width="292px" CssClass="text-box" AutoPostBack="true" OnTextChanged="TextBox1_TextChanged"> </asp:TextBox> 
+                <asp:TextBox ID="TextBox1" runat="server" Height="35px" Width="292px" CssClass="text-box" AutoPostBack="false" OnTextChanged="TextBox1_TextChanged"> </asp:TextBox> 
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="TextBox1" runat="server" ErrorMessage="Need to Enter it" ></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator2" ControlToValidate="TextBox1" runat="server" ErrorMessage="RegularExpressionValidator" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                 <br />
