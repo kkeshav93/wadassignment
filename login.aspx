@@ -35,26 +35,31 @@
         <p> If you are not a registered user, please click here:<asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click" CausesValidation="false">Register Now</asp:LinkButton></p>
 		<p> If you are a registered user, please enter your login credentials below </p>
         <br />
-        <p>If you forgot your password please click here <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">Recover My Password</asp:LinkButton></p>
+        <p>If you forgot your password please click here <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click" CausesValidation="false">Recover My Password</asp:LinkButton></p>
 
         <!-- Username and password text boxes part --> 
         <div style="width:100%; height:120px;"> 
-        
-            <div class="leftside">
-                <asp:Label ID="Label1" runat="server" Text="Label" Font-Size="2em"> User Id (Email Address):<span style="color:red">*</span> </asp:Label> 
-                <br />
-                <asp:Label ID="Label2" runat="server" Text="Label" Font-Size="2em"> Password:  </asp:Label>   
-            </div>
-
-            <div class="rightside">
-                <asp:TextBox ID="TextBox1" runat="server" Height="35px" Width="292px" CssClass="text-box" AutoPostBack="false" OnTextChanged="TextBox1_TextChanged"> </asp:TextBox> 
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="TextBox1" runat="server" ErrorMessage="Need to Enter it" ></asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" ControlToValidate="TextBox1" runat="server" ErrorMessage="RegularExpressionValidator" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
-                <br />
-                <asp:TextBox ID="TextBox2" runat="server" Height="35px" Width="292px" CssClass="text-box"></asp:TextBox> 
-                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ControlToValidate="Textbox2" runat="server" ErrorMessage="RegularExpressionValidator" ValidationExpression=".*(?=.*[a-zA-Z])(?=.*[a-z])[^/\\()~!@#$%^&*]{8,10}$"
-                     ></asp:RegularExpressionValidator>
-            </div>
+            <table style="background-color:none">
+            <tr>
+                <td>
+                    <asp:Label ID="Label1" runat="server" Text="Label" Font-Size="2em"> User Id (Email Address):<span style="color:red">*</span> </asp:Label> 
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox1" runat="server" Height="35px" Width="292px" CssClass="text-box" AutoPostBack="false" OnTextChanged="TextBox1_TextChanged"> </asp:TextBox> 
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="TextBox1" runat="server" ErrorMessage="Need to Enter it" ></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" ControlToValidate="TextBox1" runat="server" ErrorMessage="RegularExpressionValidator" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="Label2" runat="server" Text="Label" Font-Size="2em"> Password:  </asp:Label>   
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox2" runat="server" Height="35px" Width="292px" CssClass="text-box" TextMode="Password"></asp:TextBox> 
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator4" ControlToValidate="Textbox2" runat="server" ErrorMessage="RegularExpressionValidator" ValidationExpression=".*(?=.*[a-zA-Z])(?=.*[a-z])[^/\\()~!@#$%^&*]{8,10}$"></asp:RegularExpressionValidator>
+            </td>
+            </tr>
+            </table>
         </div>
         <!-- End of Username and password text boxes part -->
 

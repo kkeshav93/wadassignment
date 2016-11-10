@@ -24,7 +24,7 @@
                 <li><asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" >Home</asp:LinkButton></li>
 			    <li style="font-size: 25px; display: inline"> | </li>
 			    <li><a href="#news" style="text-decoration: none">My Account</a></li>
-                <li style="float:right"><asp:LinkButton ID="LinkButton2" runat="server" >Logout</asp:LinkButton></li>
+                <li style="float:right"><asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Logout</asp:LinkButton></li>
 		    </ul>
         </div>
         <h1 style="text-align:center"> Your Loan Account Details </h1>
@@ -35,7 +35,7 @@
                     Account Number:
                 </td>
                 <td class="cellsbeforethemainclass">
-                    999999999999
+                    <asp:label ID="Account_Number" runat="server" text="Label"></asp:label>
                 </td>
             </tr>
                 <tr class="beforemaintable">
@@ -53,7 +53,8 @@
                     Last Updated Date:
                 </td>
                 <td class="cellsbeforethemainclass">
-                    MM/DD/YYYY
+                    <asp:label ID="Last_Update_Date" runat="server" text="Label"></asp:label>
+                   
                 </td>
             </tr>
         </table>
@@ -65,7 +66,7 @@
                     Current Balance
                 </td>
                 <td class="maintable1">
-                    99999.99
+                     <asp:label ID="Current_Balance" runat="server" text="Label"></asp:label>
                 </td>
             </tr>
 
@@ -74,7 +75,7 @@
                     Last Updated Date
                 </td>
                 <td class="maintable1">
-                    99999.99
+                    <asp:label ID="Last_Update_Date1" runat="server" text="Label"></asp:label>
                 </td>
             </tr>
 
@@ -83,7 +84,7 @@
                     Regular Monthly Payment Amount
                 </td>
                 <td class="maintable1">
-                    999.99
+                    <asp:label ID="Regular_Monthly_Payment_Amount" runat="server" text="Label"></asp:label>
                 </td>
             </tr>
 
@@ -92,7 +93,7 @@
                     Amount Satisfied by Extra Payment
                 </td>
                 <td class="maintable1">
-                    999.99
+                   <asp:label ID="Amount_Satisfied_by_Extra_Payment" runat="server" text="Label"></asp:label>
                 </td>
             </tr>
 
@@ -101,7 +102,7 @@
                     Past Due Amount(if applicable)
                 </td>
                 <td class="maintable1">
-                    999.99
+                    <asp:label ID="Past_Due_Amount" runat="server" text="Label"></asp:label>
                 </td>
             </tr>
 
@@ -110,12 +111,12 @@
                     Current Amount Due
                 </td>
                 <td class="maintable1">
-                    999.99
+                    <asp:label ID="Current_Amount_Due" runat="server" text="Label"></asp:label>
                 </td>
             </tr>
         </table>
 
-        <p style="font-size:xx-large; font-weight:bold">Current Statement Due Date: &nbsp   MM/DD/YYYY</p>
+        <p style="font-size:xx-large; font-weight:bold">Current Statement Due Date: &nbsp   <asp:label ID="Current_Statement_Due_Date" runat="server" text="Label"></asp:label></p>
         <hr />
     </form>
 </body>
