@@ -28,7 +28,7 @@
 			<li><asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Home</asp:LinkButton></li>
 			<li style="font-size: 25px; display: inline"> | </li>
 			<li><a href="#news" style="text-decoration: none">Forms</a></li>
-			<li style="float:right"><asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Login</asp:LinkButton></li>
+			<li style="float:right"><asp:LinkButton ID="login_logout" runat="server" OnClick="LinkButton2_Click">Login</asp:LinkButton></li>
 		</ul>
 		
 	</div>
