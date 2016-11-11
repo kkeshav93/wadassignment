@@ -23,6 +23,11 @@ public partial class login : System.Web.UI.Page
         if (IsPostBack)
         {
             int i = 0;
+            if (allUsersList.Count == 0)
+            {
+                string str = "It apperas this user is not in our database. Please Click Register Now Link";
+                Response.Write("<script language=javascript>alert('" + str + "');</script>");
+            }
             for (i = 0; i < allUsersList.Count; i++)
             {
                 if (allUsersList[i].emailAddress == TextBox1.Text && allUsersList[i].password == TextBox2.Text)
