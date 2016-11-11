@@ -35,8 +35,10 @@ public partial class glossary : System.Web.UI.Page
         }
         else
         {
+            string str = "You Have Now Logged Out";
+            Response.Write("<script language=javascript>alert('" + str + "');</script>");
             Session.Abandon();
-            Response.Redirect("Default.aspx");
+            Response.AddHeader("REFRESH","1;Default.aspx");
             
         }
         
