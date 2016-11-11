@@ -30,7 +30,7 @@ public partial class ContactUs : System.Web.UI.Page
 
     protected void LinkButton2_Click(object sender, EventArgs e)
     {
-        if (login_logout.Text == "Login")
+        if (login_logout.Text == "login")
         {
             Response.Redirect("login.aspx");
         }
