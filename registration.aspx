@@ -53,7 +53,7 @@
                         social security number or account number if your forget your User Name or
                         Password.
                     </span></mark>
-					<asp:RequiredFieldValidator ID="SSNValidator" ControlToValidate="TextBox1" runat="server" ErrorMessage="RequiredFieldValidator" style="font-size:10px; color:red" Display="Dynamic"></asp:RequiredFieldValidator>
+					<asp:RequiredFieldValidator ID="SSNValidator" ControlToValidate="TextBox1" runat="server" ErrorMessage="Required To Enter" style="font-size:10px; color:red" Display="Dynamic"></asp:RequiredFieldValidator>
 					<asp:RegularExpressionValidator ID="SSNValidatorRegularExpressionValidator" ControlToValidate="TextBox1" runat="server" ErrorMessage="Wrong Social Security Number" ValidationExpression="\d{3}-\d{2}-\d{4}" style="font-size:10px; color:red" Display="Dynamic"></asp:RegularExpressionValidator>
                 
 				</td>
@@ -65,18 +65,18 @@
                 </td>
                 <td>
 					<asp:TextBox ID="TextBox2" runat="server" ></asp:TextBox><mark class="hello1" style="font-size:15px">?<span class="hello">Write both your last and first name </span></mark>
-					<asp:RequiredFieldValidator ID="FullNameRequiredFieldValidator2" ControlToValidate="TextBox2" runat="server" ErrorMessage="RequiredFieldValidator" style="font-size:10px; color:red"></asp:RequiredFieldValidator>
-					<asp:RegularExpressionValidator ID="FullNameRegularExpressionValidator1" ControlToValidate="TextBox2" runat="server" ErrorMessage="RegularExpressionValidator" ValidationExpression="^[a-zA-Z''-'\s]{1,40}$" style="font-size:10px; color:red"></asp:RegularExpressionValidator>
+					<asp:RequiredFieldValidator ID="FullNameRequiredFieldValidator2" ControlToValidate="TextBox2" runat="server" ErrorMessage="Required To Enter" style="font-size:10px; color:red"></asp:RequiredFieldValidator>
+					<asp:RegularExpressionValidator ID="FullNameRegularExpressionValidator1" ControlToValidate="TextBox2" runat="server" ErrorMessage="Please Follow the rules" ValidationExpression="^[a-zA-Z''-'\s]{1,40}$" style="font-size:10px; color:red"></asp:RegularExpressionValidator>
                 
 				</td>
             </tr>
 			<tr>
                 <td>
-					<asp:Label ID="Label3" runat="server" Text="Label">Conform Social Security Number<span style="color:red">*</span></asp:Label>
+					<asp:Label ID="Label3" runat="server" Text="Label">Confirm Social Security Number<span style="color:red">*</span></asp:Label>
                 </td>
                 <td>
 					<asp:TextBox ID="TextBox3" runat="server" ></asp:TextBox>
-					<asp:RequiredFieldValidator ID="ConformSSNValidatorEmptyField" ControlToValidate="TextBox3" runat="server" ErrorMessage="RequiredFieldValidator" style="font-size:10px; color:red"></asp:RequiredFieldValidator>
+					<asp:RequiredFieldValidator ID="ConformSSNValidatorEmptyField" ControlToValidate="TextBox3" runat="server" ErrorMessage="Required To Enter" style="font-size:10px; color:red"></asp:RequiredFieldValidator>
 					<asp:RegularExpressionValidator ID="ConformSSRegularExpressionValidator1" ControlToValidate="TextBox3" runat="server" ErrorMessage="Wrong Social Security Number" ValidationExpression="\d{3}-\d{2}-\d{4}" style="font-size:10px; color:red"></asp:RegularExpressionValidator>
 					<asp:CompareValidator ID="CompareValidator1" ControlToValidate="TextBox1" ControlToCompare="TextBox3" runat="server" ErrorMessage="The SSN you typed here is not matching" style="font-size:10px; color:red"></asp:CompareValidator>
 				</td>
@@ -100,7 +100,7 @@
 				 <asp:TextBox ID="TextBox4" runat="server" ></asp:TextBox><mark class="hello1" style="font-size:15px">?
                     <span class="hello">Many foreign countries do not have a zip code. If you are foreign, you can
                     skip the zip code in the address.</span></mark>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="TextBox4" runat="server" ErrorMessage="RequiredFieldValidator" style="font-size:10px; color:red"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="TextBox4" runat="server" ErrorMessage="Required To Enter" style="font-size:10px; color:red"></asp:RequiredFieldValidator>
                 
 				</td>
             </tr>
@@ -111,8 +111,8 @@
                 </td>
                 <td>
 					<asp:TextBox ID="TextBox5" runat="server"></asp:TextBox><mark class="hello1" style="font-size:15px">6 to 64 character</mark>
-					<asp:RequiredFieldValidator ID="UsernameRequiredFieldValidator2" ControlToValidate="TextBox5" runat="server" ErrorMessage="RequiredFieldValidator" style="font-size:10px; color:red"></asp:RequiredFieldValidator>
-					<asp:RegularExpressionValidator ID="UsernameRegularExpressionValidator1" ControlToValidate="TextBox5" runat="server" ErrorMessage="Username Not Valid" ValidationExpression="^[a-zA-Z''-'\s]{6,64}$" style="font-size:10px; color:red"></asp:RegularExpressionValidator>
+					<asp:RequiredFieldValidator ID="UsernameRequiredFieldValidator2" ControlToValidate="TextBox5" runat="server" ErrorMessage="Required To Enter" style="font-size:10px; color:red"></asp:RequiredFieldValidator>
+					<asp:RegularExpressionValidator ID="UsernameRegularExpressionValidator1" ControlToValidate="TextBox5" runat="server" ErrorMessage="Username Not Valid" ValidationExpression=" ^[a-zA-Z][a-zA-Z0-9]{6,64}$" style="font-size:10px; color:red"></asp:RegularExpressionValidator>
                 
 				</td>
             </tr>
@@ -123,8 +123,8 @@
                 </td>
                 <td>
 					<asp:TextBox ID="TextBox6" TextMode="Password" runat="server" ></asp:TextBox><mark class="hello1" style="font-size:15px">?<span class="hello">Password must be between 8 and 10 characters, contain at least one digit and one alphabetic character, and must not contain special characters</span></mark>
-					<asp:RequiredFieldValidator ID="PasswordRequiredFieldValidator2" ControlToValidate="TextBox6" runat="server" ErrorMessage="RequiredFieldValidator" style="font-size:10px; color:red"></asp:RequiredFieldValidator>
-					<asp:RegularExpressionValidator ID="PasswordRegularExpressionValidator1" ControlToValidate="TextBox6" runat="server" ErrorMessage="RegularExpressionValidator" ValidationExpression=".*(?=.*[a-zA-Z])(?=.*[a-z])[^/\\()~!@#$%^&*]{8,10}$" style="font-size:10px; color:red"></asp:RegularExpressionValidator>
+					<asp:RequiredFieldValidator ID="PasswordRequiredFieldValidator2" ControlToValidate="TextBox6" runat="server" ErrorMessage="Requiredr To Enter" style="font-size:10px; color:red"></asp:RequiredFieldValidator>
+					<asp:RegularExpressionValidator ID="PasswordRegularExpressionValidator1" ControlToValidate="TextBox6" runat="server" ErrorMessage="Please Follow The Rules" ValidationExpression="^(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,10})$" style="font-size:10px; color:red"></asp:RegularExpressionValidator>
                 </td>
             </tr>
 			<tr>
@@ -133,9 +133,9 @@
                 </td>
                 <td>
 					<asp:TextBox ID="TextBox7" TextMode="Password" runat="server" ></asp:TextBox>
-					<asp:RequiredFieldValidator ID="ConformPasswordRequiredFieldValidator2" ControlToValidate="TextBox7" runat="server" ErrorMessage="RequiredFieldValidator" style="font-size:10px; color:red"></asp:RequiredFieldValidator>
-					<asp:RegularExpressionValidator ID="ConformPasswordRegularExpressionValidator1" ControlToValidate="TextBox7" runat="server" ErrorMessage="RegularExpressionValidator" ValidationExpression=".*(?=.*[a-zA-Z])(?=.*[a-z])[^/\\()~!@#$%^&*]{8,10}$" style="font-size:10px; color:red"></asp:RegularExpressionValidator>
-					<asp:CompareValidator ID="CompareValidator2" runat="server" ErrorMessage="CompareValidator" ControlToValidate="TextBox7" ControlToCompare="TextBox6"></asp:CompareValidator>
+					<asp:RequiredFieldValidator ID="ConformPasswordRequiredFieldValidator2" ControlToValidate="TextBox7" runat="server" ErrorMessage="Required To Enter" style="font-size:10px; color:red"></asp:RequiredFieldValidator>
+					<asp:RegularExpressionValidator ID="ConformPasswordRegularExpressionValidator1" ControlToValidate="TextBox7" runat="server" ErrorMessage="Please Follow The Rules" ValidationExpression="^(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,10})$" style="font-size:10px; color:red"></asp:RegularExpressionValidator>
+					<asp:CompareValidator ID="CompareValidator2" runat="server" ErrorMessage="This Doesnt Match With The Password You Typed" ControlToValidate="TextBox7" ControlToCompare="TextBox6"></asp:CompareValidator>
 				</td>
             </tr>
 			<tr>
@@ -145,8 +145,8 @@
                 </td>
                 <td>
 					<asp:TextBox ID="TextBox8" runat="server" ></asp:TextBox>
-					<asp:RequiredFieldValidator ID="EmailRequiredFieldValidator2" ControlToValidate="TextBox8" runat="server" ErrorMessage="RequiredFieldValidator" style="font-size:10px; color:red"></asp:RequiredFieldValidator>
-					<asp:RegularExpressionValidator ID="EmailRegularExpressionValidator1" ControlToValidate="TextBox8" runat="server" ErrorMessage="RegularExpressionValidator" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" style="font-size:10px; color:red"></asp:RegularExpressionValidator>
+					<asp:RequiredFieldValidator ID="EmailRequiredFieldValidator2" ControlToValidate="TextBox8" runat="server" ErrorMessage="Required To Enter" style="font-size:10px; color:red"></asp:RequiredFieldValidator>
+					<asp:RegularExpressionValidator ID="EmailRegularExpressionValidator1" ControlToValidate="TextBox8" runat="server" ErrorMessage="Please Follow The Rules" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" style="font-size:10px; color:red"></asp:RegularExpressionValidator>
 
 				</td>
             </tr>
@@ -156,9 +156,9 @@
                 </td>
                 <td>
 					<asp:TextBox ID="TextBox9" runat="server" ></asp:TextBox>
-					<asp:RequiredFieldValidator ID="ConformEmailRequiredFieldValidator2" ControlToValidate="TextBox9" runat="server" ErrorMessage="RequiredFieldValidator" style="font-size:10px; color:red"></asp:RequiredFieldValidator>
-					<asp:RegularExpressionValidator ID="ConformEmailRegularExpressionValidator1" ControlToValidate="TextBox9" runat="server" ErrorMessage="RegularExpressionValidator" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" style="font-size:10px; color:red"></asp:RegularExpressionValidator>
-					<asp:CompareValidator ID="ConformEmailCompareValidator3" runat="server" ErrorMessage="CompareValidator" ControlToValidate="TextBox8" ControlToCompare="TextBox9"></asp:CompareValidator>
+					<asp:RequiredFieldValidator ID="ConformEmailRequiredFieldValidator2" ControlToValidate="TextBox9" runat="server" ErrorMessage="Required To Enter" style="font-size:10px; color:red"></asp:RequiredFieldValidator>
+					<asp:RegularExpressionValidator ID="ConformEmailRegularExpressionValidator1" ControlToValidate="TextBox9" runat="server" ErrorMessage="Please Follow The Rules" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" style="font-size:10px; color:red"></asp:RegularExpressionValidator>
+					<asp:CompareValidator ID="ConformEmailCompareValidator3" runat="server" ErrorMessage="It Doesnt Match The Email Address You Typed" ControlToValidate="TextBox8" ControlToCompare="TextBox9"></asp:CompareValidator>
 				</td>
             </tr>
 			<tr>
@@ -168,6 +168,7 @@
                 </td>
                 <td>
 					<asp:DropDownList ID="securityquestions" runat="server" ></asp:DropDownList><mark class="hello1" style="font-size:15px">?<span class="hello">You need to put this</span></mark>
+                    <asp:RequiredFieldValidator ID="SequrityQuestionRequiredFieldValidator2" ControlToValidate="TextBox10" runat="server" ErrorMessage="Required To Enter" style="font-size:10px; color:red"></asp:RequiredFieldValidator>
 
 				</td>
             </tr>
@@ -178,19 +179,16 @@
                 </td>
                 <td>
 					<asp:TextBox ID="TextBox10" runat="server" ></asp:TextBox>
-					<asp:RequiredFieldValidator ID="AnswerRequiredFieldValidator2" ControlToValidate="TextBox10" runat="server" ErrorMessage="RequiredFieldValidator" style="font-size:10px; color:red"></asp:RequiredFieldValidator>
+					<asp:RequiredFieldValidator ID="AnswerRequiredFieldValidator2" ControlToValidate="TextBox10" runat="server" ErrorMessage="Required To Enter" style="font-size:10px; color:red"></asp:RequiredFieldValidator>
 
 				</td>
             </tr>
 		</table>
          <h1 style="color:red"> *DENOTES REQUIRED ITEMS</h1>
         </div>
-
         <div style="width:100%">
         <div style="padding-left:400px;">
-            
             <asp:Button ID="Button1" runat="server" Text="Submit" Height="47px" Width="171px" OnClick="Button1_Click"/>
-
         </div>
         </div>
 
