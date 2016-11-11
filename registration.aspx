@@ -112,7 +112,7 @@
                 <td>
 					<asp:TextBox ID="TextBox5" runat="server"></asp:TextBox><mark class="hello1" style="font-size:15px">6 to 64 character</mark>
 					<asp:RequiredFieldValidator ID="UsernameRequiredFieldValidator2" ControlToValidate="TextBox5" runat="server" ErrorMessage="Required To Enter" style="font-size:10px; color:red"></asp:RequiredFieldValidator>
-					<asp:RegularExpressionValidator ID="UsernameRegularExpressionValidator1" ControlToValidate="TextBox5" runat="server" ErrorMessage="Username Not Valid" ValidationExpression=" ^[a-zA-Z][a-zA-Z0-9]{6,64}$" style="font-size:10px; color:red"></asp:RegularExpressionValidator>
+					<asp:RegularExpressionValidator ID="UsernameRegularExpressionValidator1" ControlToValidate="TextBox5" runat="server" ErrorMessage="Username Not Valid" ValidationExpression="^[a-zA-Z][a-zA-Z0-9]{5,11}$" style="font-size:10px; color:red"></asp:RegularExpressionValidator>
                 
 				</td>
             </tr>

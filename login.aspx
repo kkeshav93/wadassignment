@@ -52,7 +52,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="Label2" runat="server" Text="Label" Font-Size="2em"> Password:  </asp:Label>   
+                    <asp:Label ID="Label2" runat="server" Text="Label" Font-Size="2em"> Password: <span style="color:red">*</span> </asp:Label>   
                 </td>
                 <td>
                     <asp:TextBox ID="TextBox2" runat="server" Height="35px" Width="292px" CssClass="text-box" TextMode="Password"></asp:TextBox> 
