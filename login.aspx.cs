@@ -36,7 +36,7 @@ public partial class login : System.Web.UI.Page
                     Session["username"] = TextBox1.Text;
                     Session["password"] = TextBox2.Text;
                     Session["name"] = allUsersList[i].fullName;
-                    Session["Account_Number"] = "1111111";
+                    Session["Account_Number"] = allUsersList[i].accountNumber;
                     Session["current_Balance"] = "0.0";
                     Session["Last_Update_Date"] = "NA";
                     Session["Last_Update_Date1"] = "0.0";
