@@ -94,13 +94,13 @@ public partial class registration : System.Web.UI.Page
         if (CheckBox1.Checked == false)
         {
             string script1 = "alert('You have not checked the check box. Please check it');";
-            ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script1, true);
+            ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert",  script1, true);
         }
         //Alert Box creation
 
         string script = "alert('Thank you for submitting for registration. You can now login by clicking the Login link at the top right hand side of this page.');";
-        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
-            
+        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "err_msg", "alert('" + script + "');window.location='registration.aspx';", true);
+
     }
 
     protected void TextBox1_TextChanged(object sender, EventArgs e)
@@ -115,8 +115,12 @@ public partial class registration : System.Web.UI.Page
                 {
                     if (allUsersList[i].socialSecurityNumber == this.TextBox1.Text)
                     {
-                        string str = "Your social security number is already existing.Please login";
-                        Response.Write("<script language=javascript>alert('" + str + "');</script>");
+                        string str2 = this.TextBox1.Text + ":";
+                        string str = "social security number is already existing.Please login";
+                        string mainstr = str2 + str;
+                        //Response.Write("<script language=javascript>alert('"+str2 + ""+ str + "');</script>");
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "err_msg", "alert('" + mainstr + "');window.location='registration.aspx';", true);
+
                         break;
                     }
                 }
