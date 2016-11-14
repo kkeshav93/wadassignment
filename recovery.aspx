@@ -30,6 +30,9 @@
             </th>
             <th>
                 <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="TextBox1"></asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="RegularExpressionValidator" ControlToValidate="TextBox1" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+
             </th>
             <th>
                 <asp:Button ID="Button1" runat="server" Text="Recover Password" OnClick="Button1_Click" />
