@@ -87,6 +87,9 @@ public partial class registration : System.Web.UI.Page
             student.securityQuestionAnswer = TextBox10.Text;
             student.dateOfBirth = month1.SelectedItem.Text + "/" + date1.SelectedItem.Text + "/" + year1.SelectedItem.Text;
 
+        Random rnd = new Random();
+        student.accountNumber = rnd.Next(100000,999999);
+        
             List<StudentInfor> allUsersList = Application["AllUsersList"] as List<StudentInfor>;
             allUsersList.Add(student);
             Application["AllUsersList"] = allUsersList as List<StudentInfor>;
@@ -99,8 +102,7 @@ public partial class registration : System.Web.UI.Page
         //Alert Box creation
 
         string script = "alert('Thank you for submitting for registration. You can now login by clicking the Login link at the top right hand side of this page.');";
-        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "err_msg", "alert('" + script + "');window.location='registration.aspx';", true);
-
+        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
     }
 
     protected void TextBox1_TextChanged(object sender, EventArgs e)
