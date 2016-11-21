@@ -24,6 +24,8 @@ public partial class recovery : System.Web.UI.Page
         string body_part1 = "Dear Valued Student, <br /> You are receiving this email beause you requested to recover your password.";
         string body_part2 = "<br /><br />Your current password is:" + "<mark>" + Session["password"] + "</mark>";
         string body_part3 = "<br /><mark>K.K Student Loan</mark>";
+        //string body_part4 = "<br /> You can now access your loan account at" + "<a href=" + "login.aspx\"" + ">" + "</a>";
+        
         string body = body_part1 + body_part2 + body_part3;
         using (MailMessage mail = new MailMessage(ConfigurationManager.AppSettings["SMTPuser"], TextBox1.Text))
         {

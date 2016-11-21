@@ -5,6 +5,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Net;
+using System.Net.Mail;
+using System.Configuration;
+using System.IO;
 
 public partial class registration : System.Web.UI.Page
 {
@@ -99,6 +103,33 @@ public partial class registration : System.Web.UI.Page
             string script1 = "alert('You have not checked the check box. Please check it');";
             ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert",  script1, true);
         }
+        //Email code:
+
+        /* Body of the email is:*/
+        string body_part1 = "Dear" + "" + "<mark>" + student.userName.ToString() + ",</mark>";
+        string body_part2 = "<br /> Thank you for registering with us";
+        string body_part3 = "You can now access your loan account at <a href=\"http://www.example.com/login.aspx\">login</a>";
+        string body_part4 = "<br /><br />In the meantime, please share the word about <mark>K.K Student Loan</mark> with your friends and neighbours!.<mark>K.K Student Loan</mark> is open to all eligible college applications thoughout the United States";
+        string body_part5 = "<br />Thank you again for your registration.If you have any questions, please contact us at <a href=\"http://www.example.com/login.aspx\">here</a>";
+        string body_part6 = "<br /><br />With Best Wishes,";
+        string body_part7 = "<br /><mark>K.K Student Loan</mark>";
+        string body = body_part1 + body_part2 + body_part3 + body_part4 + body_part5 + body_part6 + body_part7;
+        using (MailMessage mail = new MailMessage(ConfigurationManager.AppSettings["SMTPuser"], TextBox1.Text))
+        {
+            mail.Subject = "New Registration Notification";
+            mail.Body = body;
+            mail.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = ConfigurationManager.AppSettings["Host"];
+            smtp.EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["EnableSSL"]); ;
+            NetworkCredential NetworkCred = new NetworkCredential(ConfigurationManager.AppSettings["SMTPuser"], ConfigurationManager.AppSettings["SMTPpassword"]);
+            smtp.UseDefaultCredentials = true;
+            smtp.Credentials = NetworkCred;
+            smtp.Port = int.Parse(ConfigurationManager.AppSettings["Port"]); ;
+            smtp.Send(mail);
+            
+        }
+
         //Alert Box creation
 
         string script = "alert('Thank you for submitting for registration. You can now login by clicking the Login link at the top right hand side of this page.');";
