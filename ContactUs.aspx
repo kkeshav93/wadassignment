@@ -56,15 +56,17 @@
     <!-- Text Box -->
 
     <br />
-   <input type="text" class="textbox1" /><br />
 
+        <asp:TextBox ID="emailbody" runat="server" Height="240px" Width="100%" TextMode="MultiLine"></asp:TextBox>
+        <br />
     <!-- End of Text Box -->
 
-    <!-- Disabled Button -->
+    <!-- Send Button -->
 
-        <button type="button" disabled class ="buttondis"> Send Message </button>
+        
+        <asp:Button ID="send_email" runat="server" Text="Send Message" CssClass="buttondis" OnClick="send_email_Click"/>
 
-    <!-- End of Disabled Button -->
+    <!-- End of Send Button -->
 
     </div>
     </form>
