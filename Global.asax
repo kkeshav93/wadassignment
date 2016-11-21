@@ -6,7 +6,17 @@
     {
         // Code that runs on application startup
         Application["AllUsersList"] = new List<StudentInfor>();
-        
+        List<StudentInfor> permenantList = new List<StudentInfor>();
+        List<StudentInfor> tempList = new List<StudentInfor>();
+
+        using(System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection())
+        {
+            sql.Open();
+
+            String selectquery = "SELECT * FROM kasichainulak_WADfl16_studentinfor";
+        }
+
+
 
     }
 
