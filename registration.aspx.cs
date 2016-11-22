@@ -9,6 +9,10 @@ using System.Net;
 using System.Net.Mail;
 using System.Configuration;
 using System.IO;
+using System.Data;
+using System.Data.SqlClient;
+using System.Diagnostics;
+
 
 public partial class registration : System.Web.UI.Page
 {
@@ -96,6 +100,7 @@ public partial class registration : System.Web.UI.Page
         
             List<StudentInfor> allUsersList = Application["AllUsersList"] as List<StudentInfor>;
             allUsersList.Add(student);
+            insert(student);
             Application["AllUsersList"] = allUsersList as List<StudentInfor>;
 
         if (CheckBox1.Checked == false)
@@ -103,33 +108,34 @@ public partial class registration : System.Web.UI.Page
             string script1 = "alert('You have not checked the check box. Please check it');";
             ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert",  script1, true);
         }
+        
         //Email code:
 
         /* Body of the email is:*/
-        string body_part1 = "Dear" + "" + "<mark>" + student.userName.ToString() + ",</mark>";
-        string body_part2 = "<br /> Thank you for registering with us";
-        string body_part3 = "You can now access your loan account at <a href=\"http://www.example.com/login.aspx\">login</a>";
-        string body_part4 = "<br /><br />In the meantime, please share the word about <mark>K.K Student Loan</mark> with your friends and neighbours!.<mark>K.K Student Loan</mark> is open to all eligible college applications thoughout the United States";
-        string body_part5 = "<br />Thank you again for your registration.If you have any questions, please contact us at <a href=\"http://www.example.com/login.aspx\">here</a>";
-        string body_part6 = "<br /><br />With Best Wishes,";
-        string body_part7 = "<br /><mark>K.K Student Loan</mark>";
-        string body = body_part1 + body_part2 + body_part3 + body_part4 + body_part5 + body_part6 + body_part7;
-        using (MailMessage mail = new MailMessage(ConfigurationManager.AppSettings["SMTPuser"], TextBox1.Text))
-        {
-            mail.Subject = "New Registration Notification";
-            mail.Body = body;
-            mail.IsBodyHtml = true;
-            SmtpClient smtp = new SmtpClient();
-            smtp.Host = ConfigurationManager.AppSettings["Host"];
-            smtp.EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["EnableSSL"]); ;
-            NetworkCredential NetworkCred = new NetworkCredential(ConfigurationManager.AppSettings["SMTPuser"], ConfigurationManager.AppSettings["SMTPpassword"]);
-            smtp.UseDefaultCredentials = true;
-            smtp.Credentials = NetworkCred;
-            smtp.Port = int.Parse(ConfigurationManager.AppSettings["Port"]); ;
-            smtp.Send(mail);
+        //string body_part1 = "Dear" + "" + "<mark>" + student.userName.ToString() + ",</mark>";
+        //string body_part2 = "<br /> Thank you for registering with us";
+        //string body_part3 = "You can now access your loan account at <a href=\"http://www.example.com/login.aspx\">login</a>";
+        //string body_part4 = "<br /><br />In the meantime, please share the word about <mark>K.K Student Loan</mark> with your friends and neighbours!.<mark>K.K Student Loan</mark> is open to all eligible college applications thoughout the United States";
+        //string body_part5 = "<br />Thank you again for your registration.If you have any questions, please contact us at <a href=\"http://www.example.com/login.aspx\">here</a>";
+        //string body_part6 = "<br /><br />With Best Wishes,";
+        //string body_part7 = "<br /><mark>K.K Student Loan</mark>";
+        //string body = body_part1 + body_part2 + body_part3 + body_part4 + body_part5 + body_part6 + body_part7;
+        //using (MailMessage mail = new MailMessage(ConfigurationManager.AppSettings["SMTPuser"], TextBox8.Text))
+        //{
+        //    mail.Subject = "New Registration Notification";
+        //    mail.Body = body;
+        //    mail.IsBodyHtml = true;
+        //    SmtpClient smtp = new SmtpClient();
+        //    smtp.Host = ConfigurationManager.AppSettings["Host"];
+        //    smtp.EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["EnableSSL"]); ;
+        //    NetworkCredential NetworkCred = new NetworkCredential(ConfigurationManager.AppSettings["SMTPuser"], ConfigurationManager.AppSettings["SMTPpassword"]);
+        //    smtp.UseDefaultCredentials = true;
+        //    smtp.Credentials = NetworkCred;
+        //    smtp.Port = int.Parse(ConfigurationManager.AppSettings["Port"]); ;
+        //    smtp.Send(mail);
             
-        }
-
+        //}
+        
         //Alert Box creation
 
         string script = "alert('Thank you for submitting for registration. You can now login by clicking the Login link at the top right hand side of this page.');";
@@ -163,5 +169,41 @@ public partial class registration : System.Web.UI.Page
         {
 
         }
+    }
+
+    public void insert(StudentInfor student_information)
+    {
+        var con = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+        string oString = "Select * from StudentInfor ";
+        SqlConnection myConnection = new SqlConnection(con);
+        SqlCommand oCmd = new SqlCommand(oString, myConnection);
+
+        try
+        {
+            myConnection.Open();
+            SqlCommand details = new SqlCommand("insert into kasichainulak_WADfl16_studentinfor values(@socialSecurityNumber,@userName,@password,@fullName,@dateOfBirth,@address,@emailAddress,@securityQuestion,@securityQuestionAnswer,@accountNumber)", myConnection);
+
+            details.Parameters.Add("@socialSecurityNumber", SqlDbType.VarChar, 50).Value = student_information.socialSecurityNumber;
+            details.Parameters.Add("@userName", SqlDbType.VarChar, 50).Value = student_information.userName;
+            details.Parameters.Add("@password", SqlDbType.VarChar, 50).Value = student_information.password;
+            //details.Parameters.Add("@certifiedchecked", SqlDbType.VarChar, 50) = student_information.certifiedchecked;
+            details.Parameters.Add("@fullName", SqlDbType.VarChar, 50).Value = student_information.fullName;
+            details.Parameters.Add("@dateOfBirth", SqlDbType.VarChar, 50).Value = student_information.dateOfBirth;
+            details.Parameters.Add("@address", SqlDbType.VarChar, 50).Value = student_information.address;
+            details.Parameters.Add("@emailAddress", SqlDbType.VarChar, 50).Value = student_information.emailAddress;
+            details.Parameters.Add("@securityQuestion", SqlDbType.VarChar, 50).Value = student_information.securityQuestion;
+            details.Parameters.Add("@securityQuestionAnswer", SqlDbType.VarChar, 50).Value = student_information.securityQuestionAnswer;
+        }
+        catch (Exception ex)
+        {
+            string str2;
+            str2 = "Error --> " + ex.Message;
+        }
+        finally
+        {
+            myConnection.Close();
+
+        }
+
     }
 }

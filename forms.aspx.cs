@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 public partial class Default2 : System.Web.UI.Page
 {
-    int ist = 0;
+    
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -15,13 +15,13 @@ public partial class Default2 : System.Web.UI.Page
             if (Session["username"] != null)
             {
                 login_logout.Text = "logout";
-                ist = 1;
+                
                 
             }
             else
             {
                 login_logout.Text = "login";
-                ist = 2;
+                
             }
         }
     }
