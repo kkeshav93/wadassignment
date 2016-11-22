@@ -24,11 +24,15 @@
             {
                 while (reader.Read())
                 {
+                    string hel = reader.ToString();
+                    
+
+                   
                     StudentInfor student = new StudentInfor();
                     student.socialSecurityNumber = reader.GetString(0);
                     student.userName = reader.GetString(1);
                     student.password = reader.GetString(2);
-                    student.certifiedchecked = reader.GetBoolean(3);
+                    //student.certifiedchecked = reader.GetBoolean(3);
                     student.fullName = reader.GetString(4);
                     student.dateOfBirth = reader.GetString(5);
                     student.address = reader.GetString(6);
@@ -37,11 +41,11 @@
                     student.securityQuestionAnswer = reader.GetString(9);
                     student.accountNumber = reader.GetInt32(10);
                     student.lastUpdatedDate = reader.GetString(11);
-                    student.currentBalance = reader.GetFloat(12);
-                    student.regularMonthlyPaymentAmount = reader.GetFloat(13);
-                    student.amountSatisfiedByExtraPayment = reader.GetFloat(14);
-                    student.pastDueAmount = reader.GetFloat(15);
-                    student.currentAmountDue = reader.GetFloat(16);
+                    student.currentBalance = (float)reader.GetDouble(12);
+                    student.regularMonthlyPaymentAmount = (float)reader.GetDouble(13);
+                    student.amountSatisfiedByExtraPayment = (float)reader.GetDouble(14);
+                    student.pastDueAmount = (float)reader.GetDouble(15);
+                    student.currentAmountDue = (float)reader.GetDouble(16);
                     student.currentStatementDueDate = reader.GetString(17);
 
                     user.Add(student);

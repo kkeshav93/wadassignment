@@ -37,14 +37,14 @@ public partial class login : System.Web.UI.Page
                     Session["password"] = TextBox2.Text;
                     Session["name"] = allUsersList[i].fullName;
                     Session["Account_Number"] = allUsersList[i].accountNumber;
-                    Session["current_Balance"] = "0.0";
-                    Session["Last_Update_Date"] = "NA";
-                    Session["Last_Update_Date1"] = "0.0";
-                    Session["Regular_Monthly_Payment_Ammount"] = "0.0";
-                    Session["Ammount_Satisfied_by_Extra_Payment"] = "0.0";
-                    Session["Past_Due_Acount"] = "0.0";
-                    Session["Current_Amount_Due"] = "0.0";
-                    Session["Current_Statement_Due_Date"] = "NA";
+                    Session["current_Balance"] = allUsersList[i].currentBalance;
+                    Session["Last_Update_Date"] = allUsersList[i].lastUpdatedDate;
+                    Session["Last_Update_Date1"] = allUsersList[i].lastUpdatedDate;
+                    Session["Regular_Monthly_Payment_Ammount"] = allUsersList[i].regularMonthlyPaymentAmount;
+                    Session["Ammount_Satisfied_by_Extra_Payment"] = allUsersList[i].amountSatisfiedByExtraPayment;
+                    Session["Past_Due_Acount"] = allUsersList[i].pastDueAmount;
+                    Session["Current_Amount_Due"] = allUsersList[i].currentAmountDue;
+                    Session["Current_Statement_Due_Date"] = allUsersList[i].currentStatementDueDate;
                     Response.Redirect("myaccount.aspx");
                 }
                 else
