@@ -1,1 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+<Advertisements>
+  <Ad>
+    <ImageUrl>~/ads/ad1.jpg</ImageUrl>
+    <AlternateText>Invalid Image</AlternateText>
+    <Impression>1</Impression>
+    <Keyword>first</Keyword>
+  </Ad>
+</Advertisements>
+ 
