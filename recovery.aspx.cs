@@ -71,4 +71,9 @@ public partial class recovery : System.Web.UI.Page
             ClientScript.RegisterStartupScript(GetType(), "alert", "alert('Thank You. An email has been sent to the address you have provided');", true);
         }
     }
+
+    protected void LinkButton1_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Default.aspx");
+    }
 }

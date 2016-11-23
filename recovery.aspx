@@ -39,7 +39,7 @@
             </th>
         </tr>
     </table>
-
+        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" CausesValidation="false">Go To Main Page</asp:LinkButton>
     </form>
 </body>
 </html>
