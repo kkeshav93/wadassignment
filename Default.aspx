@@ -82,6 +82,21 @@
 			
        </div>
 
+        <!-- Part 4 -->
+        <div id="part4">
+
+            <table>
+                <tr>
+                    <td> <asp:AdRotator ID="AdRotator1" runat="server" KeywordFilter="first"    AdvertisementFile="ads.xml"/> </td>
+                    <td> <asp:AdRotator ID="AdRotator2" runat="server"  KeywordFilter="second"  AdvertisementFile="ads.xml"/> </td>
+                    <td> <asp:AdRotator ID="AdRotator3" runat="server"  KeywordFilter="third"   AdvertisementFile="ads.xml"/> </td>
+                    <td> <asp:AdRotator ID="AdRotator4" runat="server"  KeywordFilter="fourth"  AdvertisementFile="ads.xml"/> </td>
+                    <td> <asp:AdRotator ID="AdRotator5" runat="server"  KeywordFilter="fifth"   AdvertisementFile="ads.xml"/> </td>
+                </tr>
+            </table>
+
+        </div>
+
         <!-- End of Part 3 -->
 
         <!--Footer Section -->
