@@ -57,14 +57,16 @@
 
     <br />
 
-        <asp:TextBox ID="emailbody" runat="server" Height="240px" Width="100%" TextMode="MultiLine"></asp:TextBox>
+        <asp:TextBox ID="emailbody" runat="server" Height="240px" Width="100%" TextMode="MultiLine" Enabled="False"></asp:TextBox>
         <br />
     <!-- End of Text Box -->
 
     <!-- Send Button -->
 
         
-        <asp:Button ID="send_email" runat="server" Text="Send Message" CssClass="buttondis" OnClick="send_email_Click"/>
+        <asp:Button ID="send_email" runat="server" Text="Send Message" CssClass="buttondis" OnClick="send_email_Click" Enabled="False" />
+
+       
 
     <!-- End of Send Button -->
 

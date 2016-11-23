@@ -85,7 +85,7 @@
 
         <!-- Part 4 -->
         <asp:ScriptManager ID="ScriptManager1" runat="server" />
-        <asp:Timer ID="Timer1" Interval="3000" runat="server" />
+        <asp:Timer ID="Timer1" Interval="2000" runat="server" />
         <div id="part4">
             
             <table style="width:100%">

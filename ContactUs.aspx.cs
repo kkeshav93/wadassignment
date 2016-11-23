@@ -19,10 +19,14 @@ public partial class ContactUs : System.Web.UI.Page
             if (Session["username"] != null)
             {
                 login_logout.Text = "logout";
+                send_email.Enabled = true;
+                emailbody.Enabled = true;
             }
             else
             {
                 login_logout.Text = "login";
+                send_email.Enabled = false;
+                emailbody.Enabled = false;
             }
         }
     }
@@ -50,6 +54,7 @@ public partial class ContactUs : System.Web.UI.Page
 
     protected void send_email_Click(object sender, EventArgs e)
     {
+        
         /* Body of the email is:*/
         string body = "Dear Valued Student, <br /> You are receiving this email because you contacted us with a question and/or a concern. <br /> Our support staff will repond wthin the next 48 hours. <br /><br /> Thank You <br/> <mark> K.K Student Loan </mark>";
 
