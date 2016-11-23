@@ -82,22 +82,74 @@
 			
        </div>
 
-        <!-- Part 4 -->
-        <div id="part4">
 
-            <table>
+        <!-- Part 4 -->
+        <asp:ScriptManager ID="ScriptManager1" runat="server" />
+        <asp:Timer ID="Timer1" Interval="3000" runat="server" />
+        <div id="part4">
+            
+            <table style="width:100%">
                 <tr>
-                    <td> <asp:AdRotator ID="AdRotator1" runat="server" KeywordFilter="first"    AdvertisementFile="ads.xml"/> </td>
-                    <td> <asp:AdRotator ID="AdRotator2" runat="server"  KeywordFilter="second"  AdvertisementFile="ads.xml"/> </td>
-                    <td> <asp:AdRotator ID="AdRotator3" runat="server"  KeywordFilter="third"   AdvertisementFile="ads.xml"/> </td>
-                    <td> <asp:AdRotator ID="AdRotator4" runat="server"  KeywordFilter="fourth"  AdvertisementFile="ads.xml"/> </td>
-                    <td> <asp:AdRotator ID="AdRotator5" runat="server"  KeywordFilter="fifth"   AdvertisementFile="ads.xml"/> </td>
+                    <td> 
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server"> 
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />
+                            </Triggers>
+                            <ContentTemplate>
+                            <asp:AdRotator ID="AdRotator1" runat="server"  KeywordFilter="first"   AdvertisementFile="ads.xml"/> 
+                             </ContentTemplate>
+                        </asp:UpdatePanel> 
+                    </td>
+
+                    <td> 
+                        <asp:UpdatePanel ID="UpdatePanel2" runat="server"> 
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />
+                            </Triggers>
+                            <ContentTemplate>
+                            <asp:AdRotator ID="AdRotator6" runat="server"  KeywordFilter="second"   AdvertisementFile="ads.xml"/> 
+                             </ContentTemplate>
+                        </asp:UpdatePanel> 
+                    </td>
+
+                    <td> 
+                        <asp:UpdatePanel ID="UpdatePanel3" runat="server"> 
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />
+                            </Triggers>
+                            <ContentTemplate>
+                            <asp:AdRotator ID="AdRotator2" runat="server"  KeywordFilter="third"   AdvertisementFile="ads.xml"/> 
+                             </ContentTemplate>
+                        </asp:UpdatePanel> 
+                    </td>
+
+                    <td> 
+                        <asp:UpdatePanel ID="UpdatePanel4" runat="server"> 
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />
+                            </Triggers>
+                            <ContentTemplate>
+                            <asp:AdRotator ID="AdRotator7" runat="server"  KeywordFilter="fourth"   AdvertisementFile="ads.xml"/> 
+                             </ContentTemplate>
+                        </asp:UpdatePanel> 
+                    </td>
+
+                    <td> 
+                        <asp:UpdatePanel ID="UpdatePanel5" runat="server"> 
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />
+                            </Triggers>
+                            <ContentTemplate>
+                            <asp:AdRotator ID="AdRotator8" runat="server"  KeywordFilter="fifth"   AdvertisementFile="ads.xml"/> 
+                             </ContentTemplate>
+                        </asp:UpdatePanel> 
+                    </td>
                 </tr>
             </table>
 
         </div>
 
-        <!-- End of Part 3 -->
+        <!-- End of Part 4 -->
 
         <!--Footer Section -->
 
