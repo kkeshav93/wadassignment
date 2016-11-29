@@ -234,6 +234,9 @@ public partial class registration : System.Web.UI.Page
         {
 
         }
+
+        SSNValidator.Validate();
+        SSNValidatorRegularExpressionValidator.Validate();
     }
 
     /*
