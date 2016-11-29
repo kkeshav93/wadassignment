@@ -45,6 +45,7 @@ public partial class login : System.Web.UI.Page
                     Session["Past_Due_Acount"] = allUsersList[i].pastDueAmount;
                     Session["Current_Amount_Due"] = allUsersList[i].currentAmountDue;
                     Session["Current_Statement_Due_Date"] = allUsersList[i].currentStatementDueDate;
+                    Session["emailAddress"] = allUsersList[i].emailAddress;
                     Response.Redirect("myaccount.aspx");
                 }
                 else

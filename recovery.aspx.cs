@@ -12,6 +12,7 @@ using System.IO;
 public partial class recovery : System.Web.UI.Page
 {
     string password;
+    int email_valid;
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -40,6 +41,8 @@ public partial class recovery : System.Web.UI.Page
                     {
                         student.password = reader.GetString(2);
                         password = student.password;
+                        email_valid = 1;
+                        
                     }
                    
                 }
@@ -48,29 +51,39 @@ public partial class recovery : System.Web.UI.Page
             sql.Close();
         }
 
-        /* Body of the email is:*/
-        string body_part1 = "Dear Valued Student, <br /> You are receiving this email beause you requested to recover your password.";
-        string body_part2 = "<br /><br />Your current password is:" + "<mark>" + password + "</mark>";
-        string body_part3 = "<br /><mark>K.K Student Loan</mark>";
-        //string body_part4 = "<br /> You can now access your loan account at" + "<a href=" + "login.aspx\"" + ">" + "</a>";
-
-        string body = body_part1 + body_part2 + body_part3;
-        using (MailMessage mail = new MailMessage(ConfigurationManager.AppSettings["SMTPuser"], TextBox1.Text))
+        if (email_valid == 1)
         {
-            mail.Subject = "We have recovered your password!";
-            mail.Body = body;
-            mail.IsBodyHtml = true;
-            SmtpClient smtp = new SmtpClient();
-            smtp.Host = ConfigurationManager.AppSettings["Host"];
-            smtp.EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["EnableSSL"]); ;
-            NetworkCredential NetworkCred = new NetworkCredential(ConfigurationManager.AppSettings["SMTPuser"], ConfigurationManager.AppSettings["SMTPpassword"]);
-            smtp.UseDefaultCredentials = true;
-            smtp.Credentials = NetworkCred;
-            smtp.Port = int.Parse(ConfigurationManager.AppSettings["Port"]); ;
-            smtp.Send(mail);
-            ClientScript.RegisterStartupScript(GetType(), "alert", "alert('Thank You. An email has been sent to the address you have provided');", true);
+
+
+            /* Body of the email is:*/
+            string body_part1 = "Dear Valued Student, <br /> You are receiving this email beause you requested to recover your password.";
+            string body_part2 = "<br /><br />Your current password is:" + "<mark>" + password + "</mark>";
+            string body_part3 = "<br /><mark>K.K Student Loan</mark>";
+            //string body_part4 = "<br /> You can now access your loan account at" + "<a href=" + "login.aspx\"" + ">" + "</a>";
+
+            string body = body_part1 + body_part2 + body_part3;
+            using (MailMessage mail = new MailMessage(ConfigurationManager.AppSettings["SMTPuser"], TextBox1.Text))
+            {
+                mail.Subject = "We have recovered your password!";
+                mail.Body = body;
+                mail.IsBodyHtml = true;
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = ConfigurationManager.AppSettings["Host"];
+                smtp.EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["EnableSSL"]); ;
+                NetworkCredential NetworkCred = new NetworkCredential(ConfigurationManager.AppSettings["SMTPuser"], ConfigurationManager.AppSettings["SMTPpassword"]);
+                smtp.UseDefaultCredentials = true;
+                smtp.Credentials = NetworkCred;
+                smtp.Port = int.Parse(ConfigurationManager.AppSettings["Port"]); ;
+                smtp.Send(mail);
+                ClientScript.RegisterStartupScript(GetType(), "alert", "alert('Thank You. An email has been sent to the address you have provided');", true);
+            }
+        }
+        else
+        {
+            ClientScript.RegisterStartupScript(GetType(), "alert", "alert('You are not in my database');", true);
         }
     }
+       
 
     protected void LinkButton1_Click(object sender, EventArgs e)
     {

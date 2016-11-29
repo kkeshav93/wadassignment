@@ -54,11 +54,12 @@ public partial class ContactUs : System.Web.UI.Page
 
     protected void send_email_Click(object sender, EventArgs e)
     {
+        string email_id = Session["emailAddress"].ToString();
         
         /* Body of the email is:*/
         string body = "Dear Valued Student, <br /> You are receiving this email because you contacted us with a question and/or a concern. <br /> Our support staff will repond wthin the next 48 hours. <br /><br /> Thank You <br/> <mark> K.K Student Loan </mark>";
 
-        using (MailMessage mail = new MailMessage(ConfigurationManager.AppSettings["SMTPuser"], "keshav345@gmail.com"))
+        using (MailMessage mail = new MailMessage(ConfigurationManager.AppSettings["SMTPuser"], email_id))
         {
             mail.Subject = "We have received your message!";
             mail.Body = body;

@@ -24,11 +24,6 @@ public partial class Default2 : System.Web.UI.Page
 
     protected void LinkButton1_Click(object sender, EventArgs e)
     {
-        Response.Redirect("login.aspx");
-    }
-
-    protected void LinkButton2_Click(object sender, EventArgs e)
-    {
         if (login_logout.Text == "login")
         {
             Response.Redirect("login.aspx");
@@ -38,8 +33,14 @@ public partial class Default2 : System.Web.UI.Page
             string str = "You Have Now Logged Out";
             Response.Write("<script language=javascript>alert('" + str + "');</script>");
             Session.Abandon();
+            Session.Clear();
             Response.AddHeader("REFRESH", "1;Default.aspx");
         }
+    }
+
+    protected void LinkButton2_Click(object sender, EventArgs e)
+    {
+
 
     }
 }
