@@ -84,6 +84,15 @@ public partial class registration : System.Web.UI.Page
 
             int month_number = DateTime.ParseExact(month_name, "MMMM", CultureInfo.CurrentCulture).Month;
 
+            //null values 
+
+                //amount
+                int number_defalut_int = 1;
+                float number_default = (float)number_defalut_int;
+
+                //date
+                string date_default = "1/1/1950";
+
             //copying stuff into the object
 
             StudentInfor student = new StudentInfor();
@@ -98,6 +107,12 @@ public partial class registration : System.Web.UI.Page
             student.securityQuestion = securityquestions.SelectedItem.Text;
             student.securityQuestionAnswer = TextBox10.Text;
             student.dateOfBirth = month_number + "/" + date1.SelectedItem.Text + "/" + year1.SelectedItem.Text;
+            student.lastUpdatedDate = date_default;
+            student.currentBalance = number_default;
+            student.regularMonthlyPaymentAmount = number_default;
+            student.amountSatisfiedByExtraPayment = number_default;
+            student.currentAmountDue = number_default;
+            student.currentStatementDueDate = date_default;
 
             Random rnd = new Random();
             student.accountNumber = rnd.Next(100000, 999999);
@@ -121,13 +136,13 @@ public partial class registration : System.Web.UI.Page
                 cmd.Parameters.AddWithValue("@securityQuestion", student.securityQuestion);
                 cmd.Parameters.AddWithValue("@securityQuestionAnswer", student.securityQuestionAnswer);
                 cmd.Parameters.AddWithValue("@accountNumber", student.accountNumber);
-                cmd.Parameters.AddWithValue("@lastUpdatedDate", "1/1/1111");
-                cmd.Parameters.AddWithValue("@currentBalance", "0.0");
-                cmd.Parameters.AddWithValue("@regularMonthlyPaymentAmount", "0.0");
-                cmd.Parameters.AddWithValue("@amountSatisfiedByExtraPayment", "0.0");
-                cmd.Parameters.AddWithValue("@pastDueAmount", "0.0");
-                cmd.Parameters.AddWithValue("@currentAmountDue", "0.0");
-                cmd.Parameters.AddWithValue("@currentStatementDueDate", "1/1/1111");
+                cmd.Parameters.AddWithValue("@lastUpdatedDate", student.lastUpdatedDate);
+                cmd.Parameters.AddWithValue("@currentBalance", student.currentBalance);
+                cmd.Parameters.AddWithValue("@regularMonthlyPaymentAmount", student.regularMonthlyPaymentAmount);
+                cmd.Parameters.AddWithValue("@amountSatisfiedByExtraPayment", student.amountSatisfiedByExtraPayment);
+                cmd.Parameters.AddWithValue("@pastDueAmount", student.pastDueAmount);
+                cmd.Parameters.AddWithValue("@currentAmountDue", student.currentAmountDue);
+                cmd.Parameters.AddWithValue("@currentStatementDueDate", student.currentStatementDueDate);
 
 
                 cmd.ExecuteNonQuery();
