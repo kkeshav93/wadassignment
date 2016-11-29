@@ -121,7 +121,14 @@ public partial class registration : System.Web.UI.Page
                 cmd.Parameters.AddWithValue("@securityQuestion", student.securityQuestion);
                 cmd.Parameters.AddWithValue("@securityQuestionAnswer", student.securityQuestionAnswer);
                 cmd.Parameters.AddWithValue("@accountNumber", student.accountNumber);
-                
+                cmd.Parameters.AddWithValue("@lastUpdatedDate", "1/1/1111");
+                cmd.Parameters.AddWithValue("@currentBalance", "0.0");
+                cmd.Parameters.AddWithValue("@regularMonthlyPaymentAmount", "0.0");
+                cmd.Parameters.AddWithValue("@amountSatisfiedByExtraPayment", "0.0");
+                cmd.Parameters.AddWithValue("@pastDueAmount", "0.0");
+                cmd.Parameters.AddWithValue("@currentAmountDue", "0.0");
+                cmd.Parameters.AddWithValue("@currentStatementDueDate", "1/1/1111");
+
 
                 cmd.ExecuteNonQuery();
 
