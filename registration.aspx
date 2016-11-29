@@ -54,7 +54,7 @@
                         Password.
                     </span></mark>
 					<asp:RequiredFieldValidator ID="SSNValidator" ControlToValidate="TextBox1" runat="server" ErrorMessage="Required To Enter" style="font-size:10px; color:red" Display="Dynamic"></asp:RequiredFieldValidator>
-					<asp:RegularExpressionValidator ID="SSNValidatorRegularExpressionValidator" ControlToValidate="TextBox1" runat="server" ErrorMessage="Wrong Social Security Number" ValidationExpression="\d{9}" style="font-size:10px; color:red" Display="Dynamic"></asp:RegularExpressionValidator>
+					<asp:RegularExpressionValidator ID="SSNValidatorRegularExpressionValidator" ControlToValidate="TextBox1" runat="server" ErrorMessage="Wrong Social Security Number" ValidationExpression="\d{3}-\d{2}-\d{4}" style="font-size:10px; color:red" Display="Dynamic"></asp:RegularExpressionValidator>
                 
 				</td>
             </tr>
@@ -78,7 +78,7 @@
 					<asp:TextBox ID="TextBox3" runat="server" ></asp:TextBox>
                     
 					<asp:RequiredFieldValidator ID="ConformSSNValidatorEmptyField" ControlToValidate="TextBox3" runat="server" ErrorMessage="Required To Enter" style="font-size:10px; color:red"></asp:RequiredFieldValidator>
-					<asp:RegularExpressionValidator ID="ConformSSRegularExpressionValidator1" ControlToValidate="TextBox3" runat="server" ErrorMessage="Wrong Social Security Number" ValidationExpression="\d{9}" style="font-size:10px; color:red" ></asp:RegularExpressionValidator>
+					<asp:RegularExpressionValidator ID="ConformSSRegularExpressionValidator1" ControlToValidate="TextBox3" runat="server" ErrorMessage="Wrong Social Security Number" ValidationExpression="\d{3}-\d{2}-\d{4}" style="font-size:10px; color:red" ></asp:RegularExpressionValidator>
 					<asp:CompareValidator ID="CompareValidator1" ControlToValidate="TextBox1" ControlToCompare="TextBox3" runat="server" ErrorMessage="The SSN you typed here is not matching" style="font-size:10px; color:red"></asp:CompareValidator>
 				    
                 </td>

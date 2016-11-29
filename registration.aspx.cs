@@ -1,18 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Net;
-using System.Net.Mail;
-using System.Configuration;
-using System.IO;
-using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics;
-
 
 public partial class registration : System.Web.UI.Page
 {
@@ -82,8 +73,18 @@ public partial class registration : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
+        if (CheckBox1.Checked == true)
+        {
+            //Covert the month to number
+
+            string month_name = month1.SelectedItem.Text;
+
+            int month_number = DateTime.ParseExact(month_name, "MMMM", CultureInfo.CurrentCulture).Month;
+
+            //copying stuff into the object
 
             StudentInfor student = new StudentInfor();
+
             student.userName = TextBox5.Text;
             student.password = TextBox6.Text;
             student.certifiedchecked = CheckBox1.Checked;
@@ -93,55 +94,91 @@ public partial class registration : System.Web.UI.Page
             student.emailAddress = TextBox8.Text;
             student.securityQuestion = securityquestions.SelectedItem.Text;
             student.securityQuestionAnswer = TextBox10.Text;
-            student.dateOfBirth = month1.SelectedItem.Text + "/" + date1.SelectedItem.Text + "/" + year1.SelectedItem.Text;
+            student.dateOfBirth = month_number + "/" + date1.SelectedItem.Text + "/" + year1.SelectedItem.Text;
 
-        Random rnd = new Random();
-        student.accountNumber = rnd.Next(100000,999999);
-        
-            List<StudentInfor> allUsersList = Application["AllUsersList"] as List<StudentInfor>;
-            Application["AllUsersList"] = allUsersList as List<StudentInfor>;
-            insert(student);
-            allUsersList.Add(student);
-            
-            
+            Random rnd = new Random();
+            student.accountNumber = rnd.Next(100000, 999999);
 
-        if (CheckBox1.Checked == false)
-        {
-            string script1 = "alert('You have not checked the check box. Please check it');";
-            ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert",  script1, true);
+            //Putting data into database
+            try
+            {
+
+                SqlConnection con = new SqlConnection("Data Source = dcm.uhcl.edu; Initial Catalog = c432016fa02kasichainulak; Persist Security Info = True; User ID = kasichainulak; Password = 1456090");
+                con.Open();
+                SqlCommand cmd = new SqlCommand("INSERT INTO kasichainulak_WADfl16_studentinfor (socialSecurityNumber,userName,password,certifiedchecked,fullName,dateOfBirth,address,emailAddress,securityQuestion,securityQuestionAnswer,accountNumber) VALUES (@socialSecurityNumber,@userName,@password,@certifiedchecked,@fullName,@dateOfBirth,@address,@emailAddress,@securityQuestion,@securityQuestionAnswer,@accountNumber)", con);
+
+                cmd.Parameters.AddWithValue("@socialSecurityNumber", student.socialSecurityNumber);
+                cmd.Parameters.AddWithValue("@userName", student.userName);
+                cmd.Parameters.AddWithValue("@password", student.password);
+                cmd.Parameters.AddWithValue("@certifiedchecked", student.certifiedchecked);
+                cmd.Parameters.AddWithValue("@fullName", student.fullName);
+                cmd.Parameters.AddWithValue("@dateOfBirth", student.dateOfBirth);
+                cmd.Parameters.AddWithValue("@address", student.address);
+                cmd.Parameters.AddWithValue("@emailAddress", student.emailAddress);
+                cmd.Parameters.AddWithValue("@securityQuestion", student.securityQuestion);
+                cmd.Parameters.AddWithValue("@securityQuestionAnswer", student.securityQuestionAnswer);
+                cmd.Parameters.AddWithValue("@accountNumber", student.accountNumber);
+
+                cmd.ExecuteNonQuery();
+
+                //Close the database connection
+                con.Close();
+
+                List<StudentInfor> allUsersList = Application["AllUsersList"] as List<StudentInfor>;
+                Application["AllUsersList"] = allUsersList as List<StudentInfor>;
+                allUsersList.Add(student);
+
+                //Email code:
+                /* Body of the email is:*/
+                //string body_part1 = "Dear" + "" + "<mark>" + student.userName.ToString() + ",</mark>";
+                //string body_part2 = "<br /> Thank you for registering with us";
+                //string body_part3 = "You can now access your loan account at <a href=\"http://www.example.com/login.aspx\">login</a>";
+                //string body_part4 = "<br /><br />In the meantime, please share the word about <mark>K.K Student Loan</mark> with your friends and neighbours!.<mark>K.K Student Loan</mark> is open to all eligible college applications thoughout the United States";
+                //string body_part5 = "<br />Thank you again for your registration.If you have any questions, please contact us at <a href=\"http://www.example.com/login.aspx\">here</a>";
+                //string body_part6 = "<br /><br />With Best Wishes,";
+                //string body_part7 = "<br /><mark>K.K Student Loan</mark>";
+                //string body = body_part1 + body_part2 + body_part3 + body_part4 + body_part5 + body_part6 + body_part7;
+                //using (MailMessage mail = new MailMessage(ConfigurationManager.AppSettings["SMTPuser"], TextBox8.Text))
+                //{
+                //    mail.Subject = "New Registration Notification";
+                //    mail.Body = body;
+                //    mail.IsBodyHtml = true;
+                //    SmtpClient smtp = new SmtpClient();
+                //    smtp.Host = ConfigurationManager.AppSettings["Host"];
+                //    smtp.EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["EnableSSL"]); ;
+                //    NetworkCredential NetworkCred = new NetworkCredential(ConfigurationManager.AppSettings["SMTPuser"], ConfigurationManager.AppSettings["SMTPpassword"]);
+                //    smtp.UseDefaultCredentials = true;
+                //    smtp.Credentials = NetworkCred;
+                //    smtp.Port = int.Parse(ConfigurationManager.AppSettings["Port"]); ;
+                //    smtp.Send(mail);
+
+                //}
+
+
+                
+                //Alert Box creation
+                string script = "alert('Thank you for submitting for registration. You can now login by clicking the Login link at the top right hand side of this page.');";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+               
+
+            }
+            catch(Exception ex)
+            {
+                string str2;
+                str2 = "Error --> " + ex.Message;
+                string str3 = "Sorry! Some error occured during registration!";
+
+                Response.Write("<script language=javascript>alert('" + str3 + "ERROR:" +  str2 + "');</script>");
+               
+            }
         }
 
-        //Email code:
+        else
+        {
+            string script1 = "alert('You have not checked the check box. Please check it');";
+            ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script1, true);
+        }
 
-        /* Body of the email is:*/
-        //string body_part1 = "Dear" + "" + "<mark>" + student.userName.ToString() + ",</mark>";
-        //string body_part2 = "<br /> Thank you for registering with us";
-        //string body_part3 = "You can now access your loan account at <a href=\"http://www.example.com/login.aspx\">login</a>";
-        //string body_part4 = "<br /><br />In the meantime, please share the word about <mark>K.K Student Loan</mark> with your friends and neighbours!.<mark>K.K Student Loan</mark> is open to all eligible college applications thoughout the United States";
-        //string body_part5 = "<br />Thank you again for your registration.If you have any questions, please contact us at <a href=\"http://www.example.com/login.aspx\">here</a>";
-        //string body_part6 = "<br /><br />With Best Wishes,";
-        //string body_part7 = "<br /><mark>K.K Student Loan</mark>";
-        //string body = body_part1 + body_part2 + body_part3 + body_part4 + body_part5 + body_part6 + body_part7;
-        //using (MailMessage mail = new MailMessage(ConfigurationManager.AppSettings["SMTPuser"], TextBox8.Text))
-        //{
-        //    mail.Subject = "New Registration Notification";
-        //    mail.Body = body;
-        //    mail.IsBodyHtml = true;
-        //    SmtpClient smtp = new SmtpClient();
-        //    smtp.Host = ConfigurationManager.AppSettings["Host"];
-        //    smtp.EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["EnableSSL"]); ;
-        //    NetworkCredential NetworkCred = new NetworkCredential(ConfigurationManager.AppSettings["SMTPuser"], ConfigurationManager.AppSettings["SMTPpassword"]);
-        //    smtp.UseDefaultCredentials = true;
-        //    smtp.Credentials = NetworkCred;
-        //    smtp.Port = int.Parse(ConfigurationManager.AppSettings["Port"]); ;
-        //    smtp.Send(mail);
-
-        //}
-
-        //Alert Box creation
-
-        string script = "alert('Thank you for submitting for registration. You can now login by clicking the Login link at the top right hand side of this page.');";
-        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
     }
 
     protected void TextBox1_TextChanged(object sender, EventArgs e)
@@ -173,24 +210,46 @@ public partial class registration : System.Web.UI.Page
         }
     }
 
+    /*
     public void insert(StudentInfor student_information)
     {
+        try
+        {
 
-        SqlConnection con = new SqlConnection("Data Source = dcm.uhcl.edu; Initial Catalog = c432016fa02kasichainulak; Persist Security Info = True; User ID = kasichainulak; Password = 1456090");
-        con.Open();
-        SqlCommand cmd = new SqlCommand("INSERT INTO kasichainulak_WADfl16_studentinfor (socialSecurityNumber,userName) VALUES (@socialSecurityNumber,@userName)", con);
 
-        cmd.Parameters.AddWithValue("@socialSecurityNumber", student_information.socialSecurityNumber);
-        cmd.Parameters.AddWithValue("@userName", student_information.userName);
+            SqlConnection con = new SqlConnection("Data Source = dcm.uhcl.edu; Initial Catalog = c432016fa02kasichainulak; Persist Security Info = True; User ID = kasichainulak; Password = 1456090");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("INSERT INTO kasichainulak_WADfl16_studentinfor (socialSecurityNumber,userName) VALUES (@socialSecurityNumber,@userName)", con);
 
-        cmd.ExecuteNonQuery();
+            cmd.Parameters.AddWithValue("@socialSecurityNumber", student_information.socialSecurityNumber);
+            cmd.Parameters.AddWithValue("@userName", student_information.userName);
 
-        con.Close();
+            cmd.ExecuteNonQuery();
 
+            if (cmd.ExecuteNonQuery() > 0)
+            {
+
+            }
+
+            else
+            {
+                string str2 = "Sorry! Some error occured during registration!";
+                Response.Write("<script language=javascript>alert('" + str2 + "');</script>");
+            }
+
+            con.Close();
+        }
+
+        catch(Exception ex)
+        {
+            string str2;
+            str2 = "Error --> " + ex.Message;
+            Response.Write("<script language=javascript>alert('" + str2 + "');</script>");
+        }
         //var con = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
         //string oString = "Select * from StudentInfor ";
         //SqlConnection myConnection = new SqlConnection("Data Source = dcm.uhcl.edu; Initial Catalog = c432016fa02kasichainulak; Persist Security Info = True; User ID = kasichainulak; Password = 1456090");
-        
+
         //SqlCommand oCmd = new SqlCommand(oString, myConnection);
 
         //try
@@ -222,7 +281,7 @@ public partial class registration : System.Web.UI.Page
         //    //cmd.Parameters.Add("@securityQuestion", SqlDbType.VarChar, 50).Value = student_information.securityQuestion;
         //    //cmd.Parameters.Add("@securityQuestionAnswer", SqlDbType.VarChar, 50).Value = student_information.securityQuestionAnswer;
         //    ////cmd.Parameters.Add("@accountNumber", SqlDbType.Int).Value = student_information.accountNumber;
-            
+
         //    cmd.ExecuteNonQuery();
 
         //    if (cmd.ExecuteNonQuery() > 0)
@@ -232,7 +291,7 @@ public partial class registration : System.Web.UI.Page
         //    }
         //    else
         //    {
-                
+
         //        string str2 = "Sorry! Some error occured during registration!";
         //        Response.Write("<script language=javascript>alert('" + str2 + "');</script>");
         //    }
@@ -248,6 +307,11 @@ public partial class registration : System.Web.UI.Page
         //    myConnection.Close();
 
         //}
+
+    }
+    */
+    protected void TextBox3_TextChanged(object sender, EventArgs e)
+    {
 
     }
 }

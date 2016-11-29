@@ -24,15 +24,17 @@
             {
                 while (reader.Read())
                 {
-                    string hel = reader.ToString();
-                    
+                    //Conveting the string checkbox to boolean
+                    string checkbox = reader.GetString(3);
+                    bool checkbox1 = checkbox == "1";
 
-                   
+                    //Creating object to read the database
                     StudentInfor student = new StudentInfor();
+
                     student.socialSecurityNumber = reader.GetString(0);
                     student.userName = reader.GetString(1);
                     student.password = reader.GetString(2);
-                    //student.certifiedchecked = reader.GetBoolean(3);
+                    student.certifiedchecked = checkbox1;
                     student.fullName = reader.GetString(4);
                     student.dateOfBirth = reader.GetString(5);
                     student.address = reader.GetString(6);
