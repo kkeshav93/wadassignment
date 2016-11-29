@@ -121,6 +121,7 @@ public partial class registration : System.Web.UI.Page
                 cmd.Parameters.AddWithValue("@securityQuestion", student.securityQuestion);
                 cmd.Parameters.AddWithValue("@securityQuestionAnswer", student.securityQuestionAnswer);
                 cmd.Parameters.AddWithValue("@accountNumber", student.accountNumber);
+                
 
                 cmd.ExecuteNonQuery();
 
