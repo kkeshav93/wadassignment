@@ -56,7 +56,7 @@
                 </td>
                 <td>
                     <asp:TextBox ID="TextBox2" runat="server" Height="35px" Width="292px" CssClass="text-box" TextMode="Password"></asp:TextBox> 
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator4" ControlToValidate="Textbox2" runat="server" ErrorMessage="RegularExpressionValidator" ValidationExpression=".*(?=.*[a-zA-Z])(?=.*[a-z])[^/\\()~!@#$%^&*]{8,10}$"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator4" ControlToValidate="Textbox2" runat="server" ErrorMessage="RegularExpressionValidator" ValidationExpression="^(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,10})$"></asp:RegularExpressionValidator>
             </td>
             </tr>
             </table>

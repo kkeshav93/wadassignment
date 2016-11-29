@@ -157,10 +157,10 @@ public partial class registration : System.Web.UI.Page
                 //Email code:
                 /* Body of the email is:*/
                 string body_part1 = "Dear" + "" + "<mark>" + student.userName.ToString() + ",</mark>";
-                string body_part2 = "<br /> Thank you for registering with us";
-                string body_part3 = "You can now access your loan account at <a href=\"http://www.example.com/login.aspx\">login</a>";
+                string body_part2 = "<br /> Thank you for registering with us. ";
+                string body_part3 = "You can now access your loan account at <a href=\"http://dcm.uhcl.edu/c432016fa02kasichainulak/login.aspx\">login</a>";
                 string body_part4 = "<br /><br />In the meantime, please share the word about <mark>K.K Student Loan</mark> with your friends and neighbours!.<mark>K.K Student Loan</mark> is open to all eligible college applications thoughout the United States";
-                string body_part5 = "<br />Thank you again for your registration.If you have any questions, please contact us at <a href=\"http://www.example.com/login.aspx\">here</a>";
+                string body_part5 = "<br />Thank you again for your registration.If you have any questions, please contact us at <a href=\"http://dcm.uhcl.edu/c432016fa02kasichainulak/ContactUs.aspx\">here</a>";
                 string body_part6 = "<br /><br />With Best Wishes,";
                 string body_part7 = "<br /><mark>K.K Student Loan</mark>";
                 string body = body_part1 + body_part2 + body_part3 + body_part4 + body_part5 + body_part6 + body_part7;
