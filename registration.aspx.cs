@@ -175,68 +175,78 @@ public partial class registration : System.Web.UI.Page
 
     public void insert(StudentInfor student_information)
     {
-        
+
+        SqlConnection con = new SqlConnection("Data Source = dcm.uhcl.edu; Initial Catalog = c432016fa02kasichainulak; Persist Security Info = True; User ID = kasichainulak; Password = 1456090");
+        con.Open();
+        SqlCommand cmd = new SqlCommand("INSERT INTO kasichainulak_WADfl16_studentinfor (socialSecurityNumber) VALUES (@socialSecurityNumber)", con);
+
+        cmd.Parameters.AddWithValue("@socialSecurityNumber", TextBox1.Text);
+
+        cmd.ExecuteNonQuery();
+
+        con.Close();
 
         //var con = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
-        string oString = "Select * from StudentInfor ";
-        SqlConnection myConnection = new SqlConnection("Data Source=dcm.uhcl.edu;Initial Catalog=c432016fa02kasichainulak;User ID=kasichainulak;Password=1456090");
-        SqlCommand oCmd = new SqlCommand(oString, myConnection);
+        //string oString = "Select * from StudentInfor ";
+        //SqlConnection myConnection = new SqlConnection("Data Source = dcm.uhcl.edu; Initial Catalog = c432016fa02kasichainulak; Persist Security Info = True; User ID = kasichainulak; Password = 1456090");
+        
+        //SqlCommand oCmd = new SqlCommand(oString, myConnection);
 
-        try
-        {
+        //try
+        //{
 
 
-            myConnection.Open();
-            //SqlCommand details = new SqlCommand("insert into kasichainulak_WADfl16_studentinfor values(@socialSecurityNumber,@userName,@password,@fullName,@dateOfBirth,@address,@emailAddress,@securityQuestion,@securityQuestionAnswer,@accountNumber)", myConnection);
+        //    myConnection.Open();
+        //    //SqlCommand details = new SqlCommand("insert into kasichainulak_WADfl16_studentinfor values(@socialSecurityNumber,@userName,@password,@fullName,@dateOfBirth,@address,@emailAddress,@securityQuestion,@securityQuestionAnswer,@accountNumber)", myConnection);
 
-            //SqlCommand cmd = new SqlCommand("insert into kasichainulak_WADfl16_studentinfor values(@socialSecurityNumber,@userName,@password,@fullName,@dateOfBirth,@address,@emailAddress,@securityQuestion,@securityQuestionAnswer)", myConnection);
+        //    //SqlCommand cmd = new SqlCommand("insert into kasichainulak_WADfl16_studentinfor values(@socialSecurityNumber,@userName,@password,@fullName,@dateOfBirth,@address,@emailAddress,@securityQuestion,@securityQuestionAnswer)", myConnection);
 
-            //SqlCommand cmd = new SqlCommand("insert into kasichainulak_WADfl16_studentinfor values(@socialSecurityNumber)", myConnection);
+        //    //SqlCommand cmd = new SqlCommand("insert into kasichainulak_WADfl16_studentinfor values(@socialSecurityNumber)", myConnection);
 
-            string cmdText = "INSERT into kasichainulak_WADfl16_studentinfor values(@socialSecurityNumber, @userName)";
+        //    string cmdText = "INSERT into kasichainulak_WADfl16_studentinfor values(@socialSecurityNumber, @userName)";
 
-            SqlCommand cmd = new SqlCommand(cmdText, myConnection);
+        //    SqlCommand cmd = new SqlCommand(cmdText, myConnection);
 
-            //cmd.Parameters.Add("@socialSecurityNumber", SqlDbType.VarChar, 50).Value = student_information.socialSecurityNumber;
-            //cmd.Parameters.Add("@socialSecurityNumber", SqlDbType.NVarChar, 50).Value = student_information.socialSecurityNumber;
-            cmd.Parameters.AddWithValue("@socialSecurityNumber", "111-11-1113");
-            //cmd.Parameters.Add("@userName", SqlDbType.VarChar, 50).Value = student_information.userName;
-            cmd.Parameters.AddWithValue("@userName", "keshav");
-            //cmd.Parameters.Add("@password", SqlDbType.VarChar, 50).Value = student_information.password;
-            ////cmd.Parameters.Add("@certifiedchecked", SqlDbType.NVarChar) = student_information.certifiedchecked;
-            //cmd.Parameters.Add("@fullName", SqlDbType.VarChar, 50).Value = student_information.fullName;
-            //cmd.Parameters.Add("@dateOfBirth", SqlDbType.VarChar, 50).Value = student_information.dateOfBirth;
-            //cmd.Parameters.Add("@address", SqlDbType.VarChar, 50).Value = student_information.address;
-            //cmd.Parameters.Add("@emailAddress", SqlDbType.VarChar, 50).Value = student_information.emailAddress;
-            //cmd.Parameters.Add("@securityQuestion", SqlDbType.VarChar, 50).Value = student_information.securityQuestion;
-            //cmd.Parameters.Add("@securityQuestionAnswer", SqlDbType.VarChar, 50).Value = student_information.securityQuestionAnswer;
-            ////cmd.Parameters.Add("@accountNumber", SqlDbType.Int).Value = student_information.accountNumber;
+        //    //cmd.Parameters.Add("@socialSecurityNumber", SqlDbType.VarChar, 50).Value = student_information.socialSecurityNumber;
+        //    //cmd.Parameters.Add("@socialSecurityNumber", SqlDbType.NVarChar, 50).Value = student_information.socialSecurityNumber;
+        //    cmd.Parameters.AddWithValue("@socialSecurityNumber", "111-11-1113");
+        //    //cmd.Parameters.Add("@userName", SqlDbType.VarChar, 50).Value = student_information.userName;
+        //    cmd.Parameters.AddWithValue("@userName", "keshav");
+        //    //cmd.Parameters.Add("@password", SqlDbType.VarChar, 50).Value = student_information.password;
+        //    ////cmd.Parameters.Add("@certifiedchecked", SqlDbType.NVarChar) = student_information.certifiedchecked;
+        //    //cmd.Parameters.Add("@fullName", SqlDbType.VarChar, 50).Value = student_information.fullName;
+        //    //cmd.Parameters.Add("@dateOfBirth", SqlDbType.VarChar, 50).Value = student_information.dateOfBirth;
+        //    //cmd.Parameters.Add("@address", SqlDbType.VarChar, 50).Value = student_information.address;
+        //    //cmd.Parameters.Add("@emailAddress", SqlDbType.VarChar, 50).Value = student_information.emailAddress;
+        //    //cmd.Parameters.Add("@securityQuestion", SqlDbType.VarChar, 50).Value = student_information.securityQuestion;
+        //    //cmd.Parameters.Add("@securityQuestionAnswer", SqlDbType.VarChar, 50).Value = student_information.securityQuestionAnswer;
+        //    ////cmd.Parameters.Add("@accountNumber", SqlDbType.Int).Value = student_information.accountNumber;
             
-            cmd.ExecuteNonQuery();
+        //    cmd.ExecuteNonQuery();
 
-            if (cmd.ExecuteNonQuery() > 0)
-            {
-                string str = "Thank you for registering.You can now log in.";
-                Response.Write("<script language=javascript>alert('" + str + "');</script>");
-            }
-            else
-            {
+        //    if (cmd.ExecuteNonQuery() > 0)
+        //    {
+        //        string str = "Thank you for registering.You can now log in.";
+        //        Response.Write("<script language=javascript>alert('" + str + "');</script>");
+        //    }
+        //    else
+        //    {
                 
-                string str2 = "Sorry! Some error occured during registration!";
-                Response.Write("<script language=javascript>alert('" + str2 + "');</script>");
-            }
-        }
-        catch (Exception ex)
-        {
-            string str2;
-            str2 = "Error --> " + ex.Message;
-            Response.Write("<script language=javascript>alert('" + str2 + "');</script>");
-        }
-        finally
-        {
-            myConnection.Close();
+        //        string str2 = "Sorry! Some error occured during registration!";
+        //        Response.Write("<script language=javascript>alert('" + str2 + "');</script>");
+        //    }
+        //}
+        //catch (Exception ex)
+        //{
+        //    string str2;
+        //    str2 = "Error --> " + ex.Message;
+        //    Response.Write("<script language=javascript>alert('" + str2 + "');</script>");
+        //}
+        //finally
+        //{
+        //    myConnection.Close();
 
-        }
+        //}
 
     }
 }
