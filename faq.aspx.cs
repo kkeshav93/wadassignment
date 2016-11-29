@@ -40,7 +40,6 @@ public partial class Default2 : System.Web.UI.Page
 
     protected void LinkButton2_Click(object sender, EventArgs e)
     {
-
-
+        Response.Redirect("Default.aspx");
     }
 }
