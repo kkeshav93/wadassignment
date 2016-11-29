@@ -178,9 +178,10 @@ public partial class registration : System.Web.UI.Page
 
         SqlConnection con = new SqlConnection("Data Source = dcm.uhcl.edu; Initial Catalog = c432016fa02kasichainulak; Persist Security Info = True; User ID = kasichainulak; Password = 1456090");
         con.Open();
-        SqlCommand cmd = new SqlCommand("INSERT INTO kasichainulak_WADfl16_studentinfor (socialSecurityNumber) VALUES (@socialSecurityNumber)", con);
+        SqlCommand cmd = new SqlCommand("INSERT INTO kasichainulak_WADfl16_studentinfor (socialSecurityNumber,userName) VALUES (@socialSecurityNumber,@userName)", con);
 
-        cmd.Parameters.AddWithValue("@socialSecurityNumber", TextBox1.Text);
+        cmd.Parameters.AddWithValue("@socialSecurityNumber", student_information.socialSecurityNumber);
+        cmd.Parameters.AddWithValue("@userName", student_information.userName);
 
         cmd.ExecuteNonQuery();
 
