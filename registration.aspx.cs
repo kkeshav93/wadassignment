@@ -123,7 +123,7 @@ public partial class registration : System.Web.UI.Page
 
                 SqlConnection con = new SqlConnection("Data Source = dcm.uhcl.edu; Initial Catalog = c432016fa02kasichainulak; Persist Security Info = True; User ID = kasichainulak; Password = 1456090");
                 con.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO kasichainulak_WADfl16_studentinfor (socialSecurityNumber,userName,password,certifiedchecked,fullName,dateOfBirth,address,emailAddress,securityQuestion,securityQuestionAnswer,accountNumber) VALUES (@socialSecurityNumber,@userName,@password,@certifiedchecked,@fullName,@dateOfBirth,@address,@emailAddress,@securityQuestion,@securityQuestionAnswer,@accountNumber)", con);
+                SqlCommand cmd = new SqlCommand("INSERT INTO kasichainulak_WADfl16_studentinfor (socialSecurityNumber,userName,password,certifiedchecked,fullName,dateOfBirth,address,emailAddress,securityQuestion,securityQuestionAnswer,accountNumber,lastUpdatedDate,regularMonthlyPaymentAmount,amountSatisfiedByExtraPayment,pastDueAmount,currentAmountDue,currentStatementDueDate) VALUES (@socialSecurityNumber,@userName,@password,@certifiedchecked,@fullName,@dateOfBirth,@address,@emailAddress,@securityQuestion,@securityQuestionAnswer,@accountNumber,@lastUpdatedDate,@regularMonthlyPaymentAmount,@amountSatisfiedByExtraPayment,@pastDueAmount,@currentAmountDue,@currentStatementDueDate)", con);
 
                 cmd.Parameters.AddWithValue("@socialSecurityNumber", student.socialSecurityNumber);
                 cmd.Parameters.AddWithValue("@userName", student.userName);
